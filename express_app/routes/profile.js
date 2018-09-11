@@ -22,8 +22,7 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res, next) {
     username = req.body.username;
     password = req.body.password;
-    console.debug(users);
-    console.debug(username + ": " + password);
+    console.log(username + ": " + password);
 
     if (users[username] === password) {
         req.session.username = username;
@@ -33,7 +32,7 @@ router.post('/', function (req, res, next) {
         console.log('logined');
     } else {
         res.render('error', { message: "Wrong username or password!" });
-        console.debug(username + ' login fail');
+        console.log(username + ' login fail');
     }
 });
 

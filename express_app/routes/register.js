@@ -26,7 +26,7 @@ router.post('/', function (req, res) {
             console.error(error);
             res.render('error', { error: error });
         } else {
-            console.debug(username + ' is added');
+            console.log(username + ' is added');
             res.redirect('/profile');
         }
     });

@@ -10,7 +10,7 @@ var token = undefined;
 /* GET home page. */
 router.get('/', function (req, res, next) {
     req.session.destroy();
-    console.debug('logout');
+    console.log('logout');
     res.redirect('/');
 });
 
