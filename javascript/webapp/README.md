@@ -26,3 +26,8 @@ You can change the port that the server run on by modify webpack.config.js->devS
 If package is used by components `$ npm install --save package-name`
 If package is used by dev service `$npm install --save-dev package-name`
 
+# Version v0.1
+You will need to run `npm install`
+The side now has 3 "pages": home, about, contact
+Contact will require login to view
+Just a proof of concept

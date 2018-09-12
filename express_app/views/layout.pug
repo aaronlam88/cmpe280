@@ -1,0 +1,50 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/styles/templated/assets/css/main.css')
+    link(rel='stylesheet', href='/styles/extra.css')
+    
+
+  body(class="subpage")
+
+    header(id="header")
+      div(class="inner")
+        a(href="index.html" class="logo") TripWiser
+        nav(id="nav")
+          a(href="/") Home
+          a(href="/profile") Profile
+          a(href="/register") Register
+          a(href="/checkbox") Explore 
+          a(href="/search") Search
+          a(href="/about") About
+        a(href="#navPanel" class="navPanelToggle")
+          span(class="fa fa-bars")
+
+    block content
+
+    block foot
+      footer(id="footer")
+        div(class="inner")
+          div(class="flex")
+            div(class="copyright") &copy; Credit. Design: 
+              a(href="https://templated.co") TEMPLATED. Images: 
+              a(href="https://unsplash.com") Unsplash.
+            ul(class="icons")
+              li
+                a(href="#" class="icon fa-facebook")
+                  span(class="label") Facebook
+              li
+                a(href="#" class="icon fa-twitter")
+                  span(class="label") Twitter
+              li
+                a(href="#" class="icon fa-linkedin")
+                  span(class="label") LinkedIn
+              li
+                a(href="#" class="icon fa-pinterest-p")
+                  span(class="label") Pinterest
+
+        script(src="/styles/templated/assets/js/jquery.min.js")
+        script(src="/styles/templated/assets/js/skel.min.js")
+        script(src="/styles/templated/assets/js/util.js")
+        script(src="/styles/templated/assets/js/main.js")

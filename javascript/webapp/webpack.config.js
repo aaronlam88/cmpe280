@@ -1,6 +1,5 @@
 require('@babel/preset-react');
 require('@babel/preset-env');
-
 require('node-sass') ;
 
 const path = require('path');
@@ -28,11 +27,10 @@ module.exports = {
 
     module: {
         // configuration regarding modules
-
         rules: [
             // rules for modules (configure loaders, parser options, etc.)
             {
-                test: /\.js.?$/,
+                test: /\.jsx?$/,
 
                 exclude: [/node_modules/],
                 // these are matching conditions, each accepting a regular expression or string
