@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  section(id="main" class="wrapper")
+    div(class="inner")
+      header(class="align-center")
+        h2 Setting
+      div(class="align-center")
+        form(action="checkbox" method="post")
+          div
+            h3 Which place are you interested in?
+          div
+            input(type="checkbox" name="music" id="music" value="music")
+            label(for="music") For Music Lovers
+          div
+            input(type="checkbox" name="ancient" id="ancient" value="ancient")
+            label(for="ancient") Ancient History
+          div
+            input(type="checkbox" name="romantic" id="romantic" value="romantic")
+            label(for="romantic") Romantic Destination
+          div
+            input(type="checkbox" name="popular" id="popular" value="popular")
+            label(for="popular") Popular Destination
+          div
+            input(type="checkbox" name="beaches" id="beaches" value="beaches")
+            label(for="beaches") Beaches
+          
+          div(class="12u$")
+            label Destination?
+            div(class="select-wrapper")
+              select(name="destination" id="destination")
+                option(value="asia" selected="") Asia
+                option(value="europe") Europe
+                option(value="africa") Africa
+                option(value="america") America
+        
+          input(type="submit" value="Submit")
+      br
+      div(class="inner")
+        img(src="https://hdqwalls.com/download/romantic-place-beach-2048x1152.jpg" alt="Romantic" style="width:500px;height:400px;")
+        img(src="http://bestplacesonearth.net/wp-content/uploads/2014/07/wallpaper-of-pyramids-of-giza-720x375.jpg" alt="Ancient History" style="width:500px;height:400px;")
+        img(src="http://belfastmediagroup.com/wp-content/uploads/2015/07/onstage-Lloyds.jpg" alt="Music Lovers" style="width:500px;height:400px;")
+        img(src="http://travelguide.nettavisen.no/wp-content/uploads/2015/03/MoskenesLofoten-980x660.jpeg" alt="Popular Destination" style="width:500px;height:400px;")
