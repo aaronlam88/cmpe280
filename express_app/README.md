@@ -48,7 +48,7 @@ express_app/
 ├── json_objects
 │   └── users.json
 ├── node_modules
-│   ├── ...
+│   └── ...
 ├── package-lock.json
 ├── package.json
 ├── public
