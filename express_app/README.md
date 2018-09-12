@@ -30,3 +30,7 @@ npm run devstart
 ```
 npm start
 ```
+
+# Note
+For demo purpose: username and password are store as plane text under json_objects/users.json
+This practice is not recommended and highly discouraged

@@ -17,13 +17,17 @@ router.post('/', function (req, res, next) {
     // get check
     if (req.body.music) {
         params.check.push(req.body.music);
-    } else if (req.body.ancient) {
+    }
+    if (req.body.ancient) {
         params.check.push(req.body.ancient);
-    } else if (req.body.romantic) {
+    }
+    if (req.body.romantic) {
         params.check.push(req.body.romantic);
-    } else if (req.body.popular) {
+    }
+    if (req.body.popular) {
         params.check.push(req.body.popular);
-    } else if (req.body.beaches) {
+    }
+    if (req.body.beaches) {
         params.check.push(req.body.beaches);
     }
 
@@ -32,7 +36,7 @@ router.post('/', function (req, res, next) {
         params.select = req.body.destination;
     }
     console.log(params);
-    res.render('postcheck', {check: params.check, select: params.select});
+    res.render('postcheck', { check: params.check, select: params.select });
 
 });
 module.exports = router;
