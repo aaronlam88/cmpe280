@@ -36,6 +36,7 @@ app.use('/profile', require('./routes/profile'));
 app.use('/register', require('./routes/register'));
 app.use('/logout', require('./routes/logout'));
 app.use('/checkbox', require('./routes/checkbox'));
+app.use('/search', require('./routes/search'));
 
 // for demo
 app.use('/demo', require('./routes/demo'));
