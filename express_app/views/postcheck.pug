@@ -1,6 +1,13 @@
-doctype html
-html(lang='en-US')
-  head
-  body
-    |     '    ' + #{test} + '\n'  // insert the body text
-    
+extends layout
+
+block content
+    section(id="main" class="wrapper")
+    div(class="inner")
+      header(class="align-center") 
+        h2 Post Check
+      div(class="align-center")
+        h3 You Checked
+          for item in check
+            li=item
+        h3 You Selected 
+          li=select
