@@ -1,5 +1,5 @@
 #!/bin/bash
-file=assignment.zip
+file=webkeepers.zip
 
 # remove old assignment
 if [ -f $file ] ; then
