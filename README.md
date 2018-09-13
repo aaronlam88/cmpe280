@@ -1,3 +1,12 @@
+# Team: WebKeepers
+* Aaron Lam (008841625)
+* Fan Wu (012425660)
+* Jiehan Yao (011938706)
+* Qiyue Zhang (012550096)
+
+# Git Repository
+[https://github.com/aaronlam88/cmpe280]
+
 # Requirements
 This program is tested under the following conditions. If your environment is different, please use Google for help with errors
 ```
