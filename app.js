@@ -2,33 +2,33 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
 var session = require('express-session');
 
 var logger = require('morgan');
 
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+// setup view engine
+app.set('views', path.join(__dirname, 'views')); // all view templates should be in views/ directory
+app.set('view engine', 'pug'); // using pug as view engine
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+// setup static access for html & css files
+// NOTE: all files under static directory are public and can be viewed by anyone
 app.use(express.static(path.join(__dirname, 'public')));
-// to support JSON-encoded bodies
-app.use(bodyParser.json());
-// to support URL-encoded bodies
-app.use(bodyParser.urlencoded({ extended: true }));
-// setup session
+
+// setup static access for javascript files
+app.use(express.static(path.join(__dirname, 'clientjs')));
+
+app.use(logger('dev')); // to support logging
+app.use(express.json()); // to support JSON-encoded bodies
+app.use(express.urlencoded({ extended: false })); // to support URL-encoded bodies
+app.use(cookieParser()); // to support cookie
 app.use(session({
   secret: 'webkeepers',
-  resave: true,
+  resave: false,
   saveUninitialized: false,
   cookie: { maxAge: 60000 }
-}));
+})); // to support session, and setup session
 
 
 app.use('/', require('./routes/index'));
@@ -37,9 +37,6 @@ app.use('/register', require('./routes/register'));
 app.use('/logout', require('./routes/logout'));
 app.use('/checkbox', require('./routes/checkbox'));
 app.use('/search', require('./routes/search'));
-
-// for demo
-app.use('/demo', require('./routes/demo'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

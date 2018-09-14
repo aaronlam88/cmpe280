@@ -28,35 +28,58 @@ registerCtr.regex = {
 };
 
 registerCtr.errors = {
-    username: 'username much be 4-20 characters long\n no _ or . at the beginning or end\n only allow alphanumeric characters with . and _',
-    password: 'password much be 4-20 characters long\n allow all characters',
-    email: 'only allow alphanumeric characters with . and _ in address and host'
+    username: '* username much be 4-20 characters long\n  no _ or . at the beginning or end\n  only allow alphanumeric characters with . and _',
+    password: '* password much be 4-20 characters long\n  allow all characters',
+    email: '* only allow alphanumeric characters with . and _ in address and host'
 };
 
-registerCtr.validate = function () {
+registerCtr.onsubmit = function () {
+    var result = registerCtr.validate();
+    if (result.pass) {
+        return true;
+    } else {
+        alert(result.errorMessage);
+        return false;
+    }
+}
+
+registerCtr.validate = function (checkObj) {
+    var result = {
+        errorMessage: "",
+        pass: false
+    };
+
     try {
         var errors = [];
         for (var key in registerCtr.regex) {
-            var inputField = document.getElementById(key);
+            var inputField;
+            if (checkObj) {
+                inputField = checkObj[key];
+            } else {
+                inputField = document.getElementById(key).value;
+            }
+
             if (inputField) {
-                if (!inputField.value.match(registerCtr.regex[key])) {
+                if (!inputField.match(registerCtr.regex[key])) {
                     errors.push(key);
                 }
             }
         }
 
         if (errors.length === 0) {
-            return true;
+            result.pass = true;
         } else {
-            var errorMessage = "";
+            result.pass = false;
             for (var i = 0, len = errors.length; i < len; ++i) {
-                errorMessage += '\n' + registerCtr.errors[errors[i]];
+                result.errorMessage += '\n' + registerCtr.errors[errors[i]];
             }
-            alert(errorMessage);
-            return false;
+            console.log(result.errorMessage);
         }
-    } catch(error) {
+    } catch (error) {
         console.log(error);
-        return false;
+        result.pass = false;
     }
+    return result;
 }
+
+module.exports = registerCtr;
