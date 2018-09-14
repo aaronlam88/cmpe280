@@ -1,18 +1,26 @@
 extends layout
 
 block content
+  //- include needed javascript file(s) here
+  //- the javascript will show as script text inside script tag in the output html
+  //- it's not pretty, but it works
+  script
+    include ../controllers/registerCtr.js
+    
   section(id="main" class="wrapper")
     div(class="inner")
       header(class="align-center")
         h2 Register
       div(class="box")
         div(class="align-center")
-          form(action="/register", method="post")
+          form(action="/register", method="post" onsubmit="return registerCtr.validate()")
             div(class="row uniform")
               div(class="12u$")
                 input(name = "username" id="username" type = "text" required placeholder = "username")
               div(class="12u$")
                 input(name = "password" id="password" type = "password" required placeholder = "password")
+              div(class="12u$")
+                input(name = "email" id="email" type = "email" required placeholder = "email")
               div(class="12u$")
                 ul(class="actions")
                   li
