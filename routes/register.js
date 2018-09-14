@@ -37,10 +37,8 @@ router.post('/', function (req, res) {
 
     fs.writeFile(__dirname + '/../json_objects/users.json', json, 'utf8', function (error) {
         if (error) {
-            console.error(error);
             res.render('error', { error: error });
         } else {
-            console.log(username + ' is added');
             res.redirect('/profile');
         }
     });

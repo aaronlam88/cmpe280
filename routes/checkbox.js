@@ -12,8 +12,6 @@ router.post('/', function (req, res, next) {
         select: ""
     };
 
-    console.log(req.body);
-
     // get check
     if (req.body.music) {
         params.check.push(req.body.music);
