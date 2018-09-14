@@ -1,4 +1,4 @@
-# Team: WebKeepers
+# Team __WebKeepers__
 * Aaron Lam (008841625)
 * Fan Wu (012425660)
 * Jiehan Yao (011938706)
@@ -12,6 +12,7 @@ This program is tested under the following conditions. If your environment is di
 ```
 node --version ## v10.5.0
 npm --version ## 6.4.0
+## OS macOS High Sierra
 ```
 # For Normal User
 ## Install
@@ -63,6 +64,9 @@ express_app/
 ├── public
 │   ├── checkbox.html
 │   └── styles
+├── controllers
+│   ├── client
+│   └── server
 ├── routes
 │   ├── about.js
 │   ├── checkbox.js
@@ -85,11 +89,13 @@ express_app/
     ├── register.pug
     └── search.pug
 ```
-- bin/www is the starting point for this app--> For catching error
-- app.js is the entry point for this app
-- routes/ handle routing endpoint and routing logic. Each JS file will attach to 1 endpoint and handle the routing logic for that endpoint. Avoid using a single route file to avoid git conflict/error, and make collaboration easier.
-- views/ contain all the template files to render a webpage for an endpoint. Pug is used because Jade is now Pug.
-- public/ contain CSS style and static pages
+- __bin/www__ is the starting point for this app--> For catching error
+- __app.js__ is the entry point for this app
+- __routes/__ handle routing endpoint and routing logic. Each JS file will attach to 1 endpoint and handle the routing logic for that endpoint. Avoid using a single route file to avoid git conflict/error, and make collaboration easier.
+- __controllers/client/__ contain all the JavaScript files for front-end, **this directory is _PUBLIC_**
+- __controllers/server/__ contain all the JavaScript files for back-end
+- __views/__ contain all the template files to render a webpage for an endpoint. Pug is used because Jade is now Pug.
+- __public/__ contain CSS style and static pages, **this directory is _PUBLIC_**
 
 # Credit
 This web app uses a CSS template from [https://templated.co/]
