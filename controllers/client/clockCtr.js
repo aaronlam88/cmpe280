@@ -1,18 +1,17 @@
-var clockCtr = {};
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.90
+setInterval(drawClock, 1000);
 
-clockCtr.drawClock = function () {
-    var canvas = document.getElementById("canvas");
-    var ctx = canvas.getContext("2d");
-    var radius = canvas.height / 2;
-    ctx.translate(radius, radius);
-    radius = radius * 0.90
-    clockCtr.drawFace(ctx, radius);
-    clockCtr.drawNumbers(ctx, radius);
-    clockCtr.drawTime(ctx, radius);  
-    clockCtr.drawHand(ctx, pos, length, width)
+function drawClock() {
+  drawFace(ctx, radius);
+  drawNumbers(ctx, radius);
+  drawTime(ctx, radius);
 }
 
-clockCtr.drawFace = function (ctx, radius) {
+function drawFace(ctx, radius) {
   var grad;
   ctx.beginPath();
   ctx.arc(0, 0, radius, 0, 2*Math.PI);
@@ -31,7 +30,7 @@ clockCtr.drawFace = function (ctx, radius) {
   ctx.fill();
 }
 
-clockCtr.drawNumbers = function (ctx, radius) {
+function drawNumbers(ctx, radius) {
   var ang;
   var num;
   ctx.font = radius*0.15 + "px arial";
@@ -49,7 +48,7 @@ clockCtr.drawNumbers = function (ctx, radius) {
   }
 }
 
-clockCtr.drawTime = function (ctx, radius){
+function drawTime(ctx, radius){
     var now = new Date();
     var hour = now.getHours();
     var minute = now.getMinutes();
@@ -59,16 +58,16 @@ clockCtr.drawTime = function (ctx, radius){
     hour=(hour*Math.PI/6)+
     (minute*Math.PI/(6*60))+
     (second*Math.PI/(360*60));
-    var h = clockCtr.drawHand(ctx, hour, radius*0.5, radius*0.07);
+    drawHand(ctx, hour, radius*0.5, radius*0.07);
     //minute
     minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
-    var m = clockCtr.drawHand(ctx, minute, radius*0.8, radius*0.07);
+    drawHand(ctx, minute, radius*0.8, radius*0.07);
     // second
     second=(second*Math.PI/30);
-    var s = clockCtr.drawHand(ctx, second, radius*0.9, radius*0.02);
+    drawHand(ctx, second, radius*0.9, radius*0.02);
 }
 
-clockCtr.drawHand = function (ctx, pos, length, width) {
+function drawHand(ctx, pos, length, width) {
     ctx.beginPath();
     ctx.lineWidth = width;
     ctx.lineCap = "round";
@@ -78,4 +77,3 @@ clockCtr.drawHand = function (ctx, pos, length, width) {
     ctx.stroke();
     ctx.rotate(-pos);
 }
-module.exports = clockCtr
