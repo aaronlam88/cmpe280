@@ -19,7 +19,7 @@ app.set('view engine', 'pug'); // using pug as view engine
 app.use(express.static(path.join(__dirname, 'public')));
 
 // setup static access for javascript files
-app.use(express.static(path.join(__dirname, 'controllers/client')));
+app.use(express.static(path.join(__dirname, 'controllers/server')));
 
 app.use(logger('dev')); // to support logging
 app.use(express.json()); // to support JSON-encoded bodies

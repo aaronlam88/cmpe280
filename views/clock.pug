@@ -2,6 +2,7 @@ extends layout
 
 block content
   //- include needed javascript file(s) here
-  script(src="/clockCtr.js")
+  
   form(action="/clock", method="post")
     canvas#canvas(width='400', height='400', style='background-color:#333')
+    script(src="/clockCtr.js")
