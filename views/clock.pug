@@ -2,6 +2,7 @@ extends layout
 
 block content
   //- include needed javascript file(s) here
-  
-  canvas#canvas(width='400' height='400' style='background-color:#333')
-  script(src="/clockCtr.js")
+  section(id="main" class="wrapper")
+    div(class="inner")
+      canvas#canvas(width='200' height='200' style='background-color:#51')
+      script(src="/clockCtr.js")
