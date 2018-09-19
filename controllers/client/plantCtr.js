@@ -1,38 +1,42 @@
-var plantCtr = {}
+"use strict";
 
-plantCtr.CANVAS_X = 50;
-plantCtr.CANVAS_Y = 50;
-plantCtr.CANVAS_W = 1000;
-plantCtr.CANVAS_H = 200;
-plantCtr.IMAGE_W = 100;
-plantCtr.IMAGE_H = 100;
+// name your object same as your file name
+// wrap all your functions in a object for closure and avoid namespace collision
+// include the javascript file in the correct pug file that need this javascript
+var plantCtr = (function () {
+    var CANVAS_W = 1000;
+    var CANVAS_H = 200;
+    var IMAGE_W = 100;
+    var IMAGE_H = 100;
 
-plantCtr.con;
-plantCtr.x = 0;
-plantCtr.dx = 10;
-plantCtr.image;
+    var x = 0;
+    var dx = 10;
+
+    var con = document.getElementById("canvas").getContext("2d");
+    var image = new Image();
+    image.src = "https://img.clipartxtras.com/7a99f4b3b6998c86b57a292aac76d4fa_airport-airports-icon-036430-icons-etc-white-airplane-clipart-no-background_512-512.png"
+
+        
+
+    var draw = function () {
+        con.strokeStyle = "white";
+        con.fillStyle = "white";
+        con.fillRect(0, 0, CANVAS_W, CANVAS_H);
+        con.strokeRect(0, 0, CANVAS_W, CANVAS_H);
+
+        if (x > 800) x = 0;
+
+        con.save();
+
+        con.drawImage(image, x, 0, IMAGE_W, IMAGE_H);
+        x += dx
+        con.restore();
+    }
+
+    return {
+        draw: draw
+    }
+})();
 
 
-plantCtr.init = function init() {
-    plantCtr.con = document.getElementById("canvas").getContext("2d");
-    plantCtr.image = new Image();
-    plantCtr.image.src = "https://img.clipartxtras.com/7a99f4b3b6998c86b57a292aac76d4fa_airport-airports-icon-036430-icons-etc-white-airplane-clipart-no-background_512-512.png"
-
-    setInterval(plantCtr.draw, 50);
-}
-
-plantCtr.draw = function draw() {
-    plantCtr.con.strokeStyle = "white";
-    plantCtr.con.fillStyle = "white";
-    plantCtr.con.fillRect(0, 0, plantCtr.CANVAS_W, plantCtr.CANVAS_H);
-    plantCtr.con.strokeRect(0, 0, plantCtr.CANVAS_W, plantCtr.CANVAS_H);
-
-    if (plantCtr.x > 800) plantCtr.x = 0;
-
-    plantCtr.con.save();
-    
-    plantCtr.con.drawImage(plantCtr.image, plantCtr.x, 0, plantCtr.IMAGE_W, plantCtr.IMAGE_H);
-    plantCtr.x += plantCtr.dx
-    plantCtr.con.restore();
-}
-plantCtr.init();
+setInterval(plantCtr.draw, 50);

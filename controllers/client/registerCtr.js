@@ -1,3 +1,5 @@
+"use strict";
+
 // name your object same as your file name
 // wrap all your functions in a object for closure and avoid namespace collision
 // include the javascript file in the correct pug file that need this javascript
