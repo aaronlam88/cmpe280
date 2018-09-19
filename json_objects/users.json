@@ -1,0 +1,9 @@
+{
+    "testuser1": {
+        "password": "testpass1",
+        "email": "test@test.com",
+        "phone": "123-456-7890"
+    },
+    "testuser2": "testpass2",
+    "testuser3": "testpass3"
+}
