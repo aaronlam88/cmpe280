@@ -10,7 +10,8 @@ var registerCtr = require('../controllers/server/registerCtr');
 
 router.get('/', function (req, res, next) {
     if (req.session.token) {
-        res.render('profile', { username: req.session.username, token: req.session.token, message: "You already registered!" });
+        var username = req.session.username
+        res.render('profile', { username: username, token: req.session.token, user: users[username], message: "You already registered!" });
     } else {
         res.render('register');
     }
@@ -21,6 +22,8 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res) {
     var username = req.body.username;
     var password = req.body.password;
+    var email = req.body.email;
+    var phone = req.body.phone;
 
     // should not rely on front end to check the data
     // double check the data in back end
@@ -34,7 +37,12 @@ router.post('/', function (req, res) {
         return res.render('error', { error: error });
     }
 
-    users[username] = password;
+    users[username] = {
+        password: password,
+        email: email,
+        phone: phone
+    }
+
     var json = JSON.stringify(users, null, 4);
 
     fs.writeFile(__dirname + '/../json_objects/users.json', json, 'utf8', function (error) {
