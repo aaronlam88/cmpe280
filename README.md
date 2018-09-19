@@ -7,6 +7,18 @@
 # Git Repository
 [https://github.com/aaronlam88/cmpe280]
 
+# Versions
+## Assignment 3
+* __Branch:__ assignment3 (git checkout assignment3)
+* __Feature:__ 
+    * Add client-side JavaScript form validation (/register)
+    * Add client-side JavaScript canvas animation (/clock, /home)
+## Assignment 2
+* __Branch:__ assignment2 (git checkout assignment2)
+* __Feature:__
+    * Initial project setup
+    * Prototype with register, login, search features (/register, /profile, /search)
+
 # Requirements
 This program is tested under the following conditions. If your environment is different, please use Google for help with errors
 ```
