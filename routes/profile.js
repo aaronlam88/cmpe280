@@ -24,11 +24,11 @@ router.post('/', function (req, res, next) {
     username = req.body.username;
     password = req.body.password;
 
-    if (users[username] === password) {
+    if (users[username].password === password) {
         req.session.username = username;
         token = Math.random().toString(36);
         req.session.token = token;
-        res.render('profile', { username: username, token: token });
+        res.render('profile', { username: username, token: token, user: users[username] });
     } else {
         res.render('error', { message: "Wrong username or password!" });
     }

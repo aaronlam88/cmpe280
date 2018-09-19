@@ -6,7 +6,12 @@ block content
       header(class="align-center") 
         h2 Welcome #{username}
       div(class="align-center")
-        p Your access token is "#{token}"
+        p Your access token is: "#{token}"
+        if user
+          if user.email
+            p Your email is: "#{user.email}"
+          if user.phone
+            p Your phone is: "#{user.phone}"
         form(action="/logout", method="get")
           button(type="Submit" class="button special") Log out
         h3 User Data Profile Here
