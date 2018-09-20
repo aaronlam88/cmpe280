@@ -4,6 +4,14 @@
         "email": "test@test.com",
         "phone": "123-456-7890"
     },
-    "testuser2": "testpass2",
-    "testuser3": "testpass3"
+    "testuser2": {
+        "password": "testpass2",
+        "email": "test-user.2@email.com",
+        "phone": "4003001234"
+    },
+    "testuser3": {
+        "password": "testpass3",
+        "email": "test.user3@e-mail.com",
+        "phone": "0000000000"
+    }
 }

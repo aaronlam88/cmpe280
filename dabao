@@ -9,6 +9,6 @@ fi
 # make a copy of README as instruction so TA can read it
 cp README.md instruction.txt
 # zip all the files
-zip -r $file bin json_objects public routes views app.js package.json package-lock.json README.md instruction.txt
+git archive -o $file HEAD
 # remove the instruction file because it's useless
 rm instruction.txt
