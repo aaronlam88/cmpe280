@@ -7,6 +7,9 @@
 # Git Repository
 [https://github.com/aaronlam88/cmpe280]
 
+# Website
+[http://54.176.230.26:3000/]
+
 # Versions
 ## Assignment 3
 * __Branch:__ assignment3 (git checkout assignment3)
