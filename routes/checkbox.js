@@ -14,27 +14,14 @@ router.post('/', function (req, res, next) {
     };
 
     // get check
-    if (req.body.music) {
-        params.check.push(req.body.music);
-    }
-    if (req.body.ancient) {
-        params.check.push(req.body.ancient);
-    }
-    if (req.body.romantic) {
-        params.check.push(req.body.romantic);
-    }
-    if (req.body.popular) {
-        params.check.push(req.body.popular);
-    }
-    if (req.body.beaches) {
-        params.check.push(req.body.beaches);
+    if (req.body.interests) {
+        params.check = req.body.interests;
     }
 
     // get select
     if (req.body.destination) {
         params.select = req.body.destination;
     }
-
     res.render('postcheck', { check: params.check, select: params.select });
 
 });

@@ -1,11 +1,18 @@
 "use strict";
 
+// name your object same as your file name
+// wrap all your functions in a object for closure and avoid namespace collision
+// include the javascript file in the correct pug file that need this javascript
+// think of this as your class (in ES6 we will have class)
 var clockCtr = (function () {
+    // ==== class variables ====
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
     var radius = canvas.height / 2;
     ctx.translate(radius, radius);
-    radius = radius * 0.90
+    radius = radius * 0.90;
+
+    // ==== functions ====
 
     var drawClock = function () {
         drawFace(ctx, radius);
@@ -80,9 +87,12 @@ var clockCtr = (function () {
         ctx.rotate(-pos);
     };
 
+    // expose functions or variables in the return
+    // ==> make functions or variables in the return public
     return {
         drawClock: drawClock
-    }
+    };
 })();
 
+// ==== onload --> call the following functions ====
 setInterval(clockCtr.drawClock, 1000);

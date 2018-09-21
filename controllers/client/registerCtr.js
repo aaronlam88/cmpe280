@@ -49,6 +49,8 @@ var registerCtr = (function () {
             '* phone number much 10 digits in format xxx-xxx-xxxx or xxxxxxxxxx'
     };
 
+    // ==== functions ====
+
     // to handle form submission, validate before submit
     // TODO: show error on form instead of using alert
     var onsubmit = function () {
@@ -58,7 +60,7 @@ var registerCtr = (function () {
             return false; // disable this to redirect to error page
         }
         return true;
-    }
+    };
 
     /**
      * actual form validation work is done here
@@ -104,12 +106,12 @@ var registerCtr = (function () {
             result.pass = false;
         }
         return result;
-    }
+    };
 
     // expose functions or variables in the return
     // ==> make functions or variables in the return public
     return {
         onsubmit: onsubmit,
         validate: validate
-    }
+    };
 })();

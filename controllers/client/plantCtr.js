@@ -5,7 +5,7 @@
 // include the javascript file in the correct pug file that need this javascript
 // think of this as your class (in ES6 we will have class)
 var plantCtr = (function () {
-    // "global var"
+    // ==== class variables ====
     var CANVAS_W = 1000;
     var CANVAS_H = 200;
     var IMAGE_W = 100;
@@ -17,7 +17,9 @@ var plantCtr = (function () {
     var con = document.getElementById("canvas").getContext("2d");
 
     var image = new Image();
-    image.src = "https://img.clipartxtras.com/7a99f4b3b6998c86b57a292aac76d4fa_airport-airports-icon-036430-icons-etc-white-airplane-clipart-no-background_512-512.png"
+    image.src = "https://img.clipartxtras.com/7a99f4b3b6998c86b57a292aac76d4fa_airport-airports-icon-036430-icons-etc-white-airplane-clipart-no-background_512-512.png";
+
+    // ==== functions ====
 
     var draw = function () {
         con.strokeStyle = "white";
@@ -32,12 +34,14 @@ var plantCtr = (function () {
         con.drawImage(image, x, 0, IMAGE_W, IMAGE_H);
         x += dx
         con.restore();
-    }
+    };
 
-    // make func
+    // expose functions or variables in the return
+    // ==> make functions or variables in the return public
     return {
         draw: draw
-    }
+    };
 })();
 
+// ==== onload --> call the following functions ====
 setInterval(plantCtr.draw, 1000/30);
