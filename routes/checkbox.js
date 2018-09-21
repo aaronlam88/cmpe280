@@ -34,7 +34,7 @@ router.post('/', function (req, res, next) {
     if (req.body.destination) {
         params.select = req.body.destination;
     }
-    console.log(params);
+
     res.render('postcheck', { check: params.check, select: params.select });
 
 });

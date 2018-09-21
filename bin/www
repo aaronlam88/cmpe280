@@ -13,6 +13,7 @@ var http = require('http');
  */
 
 var port = normalizePort(process.env.PORT || '3000');
+console.info('\x1b[42m[server] server is running on port: ' + port + '\x1b[0m');
 app.set('port', port);
 
 /**

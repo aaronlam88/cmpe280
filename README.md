@@ -11,6 +11,11 @@
 [http://54.176.230.26:3000/]
 
 # Versions
+## Assignment 4
+* __Branch:__ assignment4 (git checkout assignment4)
+* __Feature:__
+    * Update package.json --> use npx to run nodemon (make devinstall command optional for developers)
+    * ...
 ## Assignment 3
 * __Branch:__ assignment3 (git checkout assignment3)
 * __Feature:__ 
@@ -43,6 +48,9 @@ npm start
 ## Install
 ```
 npm install
+```
+### Optional (Recommended) Install
+```
 npm run devinstall
 ```
 
@@ -104,7 +112,7 @@ express_app/
     ├── register.pug
     └── search.pug
 ```
-- __bin/www__ is the starting point for this app--> For catching error
+- __bin/www__ is the starting point for this app
 - __app.js__ is the entry point for this app
 - __routes/__ handle routing endpoint and routing logic. Each JS file will attach to 1 endpoint and handle the routing logic for that endpoint. Avoid using a single route file to avoid git conflict/error, and make collaboration easier.
 - __controllers/client/__ contain all the JavaScript files for front-end, **this directory is _PUBLIC_**

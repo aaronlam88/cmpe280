@@ -97,10 +97,10 @@ var registerCtr = (function () {
                 for (var i = 0, len = errorsStack.length; i < len; ++i) {
                     result.errorMessage += '\n' + errors[errorsStack[i]];
                 }
-                console.log(result.errorMessage);
+                console.error(result.errorMessage);
             }
         } catch (error) {
-            console.log(error);
+            console.error(error);
             result.pass = false;
         }
         return result;
