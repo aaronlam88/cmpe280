@@ -11,4 +11,5 @@ cp README.md instruction.txt
 # zip all the files
 git archive -o $file HEAD
 # remove the instruction file because it's useless
-rm instruction.txt
+# keeping instruction.txt just so git can archive it next time
+# rm instruction.txt
