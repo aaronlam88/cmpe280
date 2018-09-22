@@ -1752,7 +1752,7 @@
 	}
 
 	.inner {
-		max-width: 75em;
+		max-width: 80%;
 		margin: 0 auto;
 	}
 
@@ -2940,7 +2940,6 @@
 		background-attachment: fixed;
 		background-repeat: no-repeat;
 		text-align: center;
-		border-top: 0.5em solid #5385c1;
 	}
 
 		#banner h1 {
