@@ -1,15 +1,19 @@
 "use strict";
-require('pug');
+
+require('pug'); // check if pug is install
 
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-
+var compression = require('compression')
 var logger = require('morgan');
 
 var app = express();
+
+// setup compression, use gzip to improve performance
+app.use(compression())
 
 // setup view engine
 app.set('views', path.join(__dirname, 'views')); // all view templates should be in views/ directory
@@ -33,7 +37,7 @@ app.use(session({
   cookie: { maxAge: 60000 }
 })); // to support session, and setup session
 
-
+// route --> page
 app.use('/', require('./routes/index'));
 app.use('/home', require('./routes/index'));
 app.use('/profile', require('./routes/profile'));

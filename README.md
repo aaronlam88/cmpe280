@@ -14,7 +14,7 @@
 ## Assignment 4
 * __Branch:__ assignment4 (git checkout assignment4)
 * __Feature:__
-    * Update package.json --> use npx to run nodemon (make devinstall command optional for developers)
+    * Update package.json --> use npx to run nodemon (use local nodemon instead of global)
     * ...
 ## Assignment 3
 * __Branch:__ assignment3 (git checkout assignment3)
@@ -48,10 +48,6 @@ npm start
 ## Install
 ```
 npm install
-```
-### Optional (Recommended) Install
-```
-npm run devinstall
 ```
 
 ## To run with hot reload
