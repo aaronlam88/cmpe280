@@ -6,37 +6,51 @@
 // think of this as your class (in ES6 we will have class)
 var plantCtr = (function () {
     // ==== class variables ====
-    var CANVAS_W = 800;
-    var CANVAS_H = 100;
+    var CANVAS_W;
+    var CANVAS_H;
 
     var x = 0;
     var dx = 10;
 
-    var con = document.getElementById("plane").getContext("2d");
+    var canvas = document.getElementById("plane");
+    var context = canvas.getContext("2d");
 
     var image = new Image();
-    image.src = "https://img.clipartxtras.com/7a99f4b3b6998c86b57a292aac76d4fa_airport-airports-icon-036430-icons-etc-white-airplane-clipart-no-background_512-512.png";
+    image.src = "images/plane.png";
 
     // ==== functions ====
 
+    var init = function() {
+        window.addEventListener('resize', resizeCanvas, false);
+        resizeCanvas();
+    }
+
+    var resizeCanvas = function () {
+        CANVAS_W = window.innerWidth || 800;
+        CANVAS_W = window.innerHeight || 100;
+        canvas.width = CANVAS_W;
+        canvas.height = CANVAS_H;
+        draw();
+    }
+
     var draw = function () {
-        con.clearRect(0, 0, CANVAS_W, CANVAS_H);
+        context.clearRect(0, 0, CANVAS_W, CANVAS_H);
 
-        if (x > 800) x = 0;
+        if (x > CANVAS_W) x = 0;
 
-        con.save();
+        context.save();
 
-        con.drawImage(image, x, 0, 100, 100);
+        context.drawImage(image, x, 0, 100, 100);
         x += dx
-        con.restore();
+        context.restore();
     };
 
     // expose functions or variables in the return
     // ==> make functions or variables in the return public
     return {
-        draw: draw
+        init: init
     };
 })();
 
 // ==== onload --> call the following functions ====
-setInterval(plantCtr.draw, 1000/30);
+setInterval(plantCtr.init, 1000/30);
