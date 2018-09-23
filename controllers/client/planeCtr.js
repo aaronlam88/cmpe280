@@ -10,7 +10,7 @@ var plantCtr = (function () {
     var CANVAS_H;
 
     var x = 0;
-    var dx = 10;
+    var dx = 8;
 
     var canvas = document.getElementById("plane");
     var context = canvas.getContext("2d");
@@ -26,11 +26,11 @@ var plantCtr = (function () {
     }
 
     var resizeCanvas = function () {
-        CANVAS_W = window.innerWidth || 800;
-        CANVAS_W = window.innerHeight || 100;
+        CANVAS_W = document.getElementById('canvasWrapper').offsetWidth;
+        CANVAS_H = 100;
         canvas.width = CANVAS_W;
         canvas.height = CANVAS_H;
-        draw();
+        setInterval(draw, 1000/24);
     }
 
     var draw = function () {
@@ -53,4 +53,4 @@ var plantCtr = (function () {
 })();
 
 // ==== onload --> call the following functions ====
-setInterval(plantCtr.init, 1000/30);
+plantCtr.init();
