@@ -2,6 +2,14 @@ doctype html
 html
   head
     title= title
+    //- for SOE
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="Description" content="A travel helper website")
+
+    //- for Progressive Web App
+    meta(name="theme-color" content="#5385c1")
+
+    link(rel='shortcut icon' type='image/x-icon' href='/favicon.ico')
     link(rel='stylesheet', href='/styles/templated/assets/css/font-awesome.min.css')
     link(rel='stylesheet', href='/styles/templated/assets/css/main.css')
     link(rel='stylesheet', href='/styles/extra.css')
@@ -11,7 +19,8 @@ html
 
     header(id="header")
       div(class="inner")
-        a(href="index.html" class="logo") TripWiser
+        a(href="index.html" class="logo")
+          img(src="/logo.png" alt="TripWiser Logo")
         nav(id="nav")
           a(href="/") Home
           a(href="/profile") Profile
