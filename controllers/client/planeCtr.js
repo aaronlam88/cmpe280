@@ -18,19 +18,23 @@ var plantCtr = (function () {
     var image = new Image();
     image.src = "images/plane.png";
 
+    var millisecondPerFrames = 1000/24;
+    var run;
     // ==== functions ====
-
     var init = function() {
         window.addEventListener('resize', resizeCanvas, false);
         resizeCanvas();
     }
 
     var resizeCanvas = function () {
+        clearInterval(run);
+        
         CANVAS_W = document.getElementById('canvasWrapper').offsetWidth;
         CANVAS_H = 100;
         canvas.width = CANVAS_W;
         canvas.height = CANVAS_H;
-        setInterval(draw, 1000/24);
+
+        run = setInterval(draw, millisecondPerFrames);
     }
 
     var draw = function () {
