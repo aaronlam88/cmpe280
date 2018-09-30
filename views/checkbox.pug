@@ -3,7 +3,8 @@ extends layout
 block content
   //- include needed javascript file(s) here
   script(src="/checkboxCtr.js")
-
+  script(src="draggable.js")
+  script(scr="resize.js")
   section(id="main" class="wrapper")
     div(class="inner")
       header(class="align-center")
@@ -40,7 +41,11 @@ block content
           input(type="submit" value="Submit")
       br
       div(class="inner")
-        img(src="https://hdqwalls.com/download/romantic-place-beach-2048x1152.jpg" alt="Romantic" style="width:500px;height:400px;")
-        img(src="http://bestplacesonearth.net/wp-content/uploads/2014/07/wallpaper-of-pyramids-of-giza-720x375.jpg" alt="Ancient History" style="width:500px;height:400px;")
-        img(src="http://belfastmediagroup.com/wp-content/uploads/2015/07/onstage-Lloyds.jpg" alt="Music Lovers" style="width:500px;height:400px;")
-        img(src="http://travelguide.nettavisen.no/wp-content/uploads/2015/03/MoskenesLofoten-980x660.jpeg" alt="Popular Destination" style="width:500px;height:400px;")
+        div(id ="p1")
+          img(src="https://hdqwalls.com/download/romantic-place-beach-2048x1152.jpg" alt="Romantic" style="width:500px;height:400px;")
+        div(id ="p2")
+          img(src="http://bestplacesonearth.net/wp-content/uploads/2014/07/wallpaper-of-pyramids-of-giza-720x375.jpg" alt="Ancient History" style="width:500px;height:400px;")
+        div(id ="p3")
+          img(src="http://belfastmediagroup.com/wp-content/uploads/2015/07/onstage-Lloyds.jpg" alt="Music Lovers" style="width:500px;height:400px;")
+        div(id ="p4")
+          img(src="http://travelguide.nettavisen.no/wp-content/uploads/2015/03/MoskenesLofoten-980x660.jpeg" alt="Popular Destination" style="width:500px;height:400px;")

@@ -47,6 +47,7 @@ app.use('/checkbox', require('./routes/checkbox'));
 app.use('/search', require('./routes/search'));
 app.use('/clock', require('./routes/clock'));
 app.use('/draggable', require('./routes/draggable'));
+app.use('/resize', require('./routes/resize'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
