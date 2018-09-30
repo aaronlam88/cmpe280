@@ -1,20 +1,9 @@
 extends layout
 
 block content
-    section(id="main" class="wrapper")
-    head
-        meta(http-equiv="content-type" content="text/xml; charset=utf-8")
-        style
-            #resizeMe {width: 200px; height: 160px; padding: 0.5em; border-style: dotted;}
-            #resizeMe h2 { text-align: center; margin: 0; }
-        script(type = "text/javascript" src="resize.js")
-        title resize.html
-    body
-        h1 Resize Demo
-        div( id = resizeMe class="ui-widget-content")
-            h2(clsss ="ui-widget-header") Resizable
-            p
-                Drag a corner or side to resize.
+  script(src="/resize.js")
+  div(id="resizeable" class="ui-widget-content")
+    p Drag me around
     
 
 
