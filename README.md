@@ -14,8 +14,10 @@
 ## Assignment 4
 * __Branch:__ assignment4 (git checkout assignment4)
 * __Feature:__
-    * Update package.json --> use npx to run nodemon (use local nodemon instead of global)
-    * ...
+    * Update package.json --> use npx to run nodemon (use local nodemon instead of global, make `npm run devinstall` optional)
+    * Add demo with jquery and jquery-ui
+        * Draggable
+        * Resize
 ## Assignment 3
 * __Branch:__ assignment3 (git checkout assignment3)
 * __Feature:__ 

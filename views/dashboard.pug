@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  section(id="main" class="wrapper")
+    div(class="inner")
+      header(class="align-center") 
+        h2 Dashboard
+      div(id="userTable" class="table-wrapper")
+    div(class="align-center")
+      form(action="/logout", method="get")
+          button(type="Submit" class="button special") Log out
+    script(src="/common/api.js")
+    script(src="/dashboardCtr.js")
