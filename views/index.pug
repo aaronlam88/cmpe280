@@ -8,4 +8,18 @@ block content
       div(id="canvasWrapper" class="align-left")
         canvas(id='plane')
         script(src="/planeCtr.js")
+        div(class="inner")
+            script(src="/dragDrop.js")
+            div(id="dragMe" class="ui-widget-content",style="width: 200px;height: 100px;padding: 5px;display: inline-table;")
+                p Please drag countries you want to go to below box!
+                ul#source
+                    li(data-value='country') USA
+                    li(data-value='country') India
+                    li(data-value='country') UK
+                    li(data-value='country') China
+                    li(data-value='country') Korean
+                    li(data-value='country') Japan
+            div
+            div(id="target" class="ui-widget-content",style="width: 300px;height: 200px;padding: 5px;display: inline-table;")
+                p Countries
     

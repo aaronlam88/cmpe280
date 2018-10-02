@@ -1,15 +1,23 @@
 $(function() {
-    $( "#dragMe" ).draggable();
-    $( "#target" ).droppable();
-    $("#target").bind("drop", highlightTarget);
+    $( "#dragMe li" ).draggable({
+        helper: 'clone',
+        revert: 'invalid'
+    });
+    $( "#target" ).droppable({
+        accept: 'li[data-value="country"]',
+        drop: function (event, ui) {
+          $('#target').append(ui.draggable);
+      }
+    });
+    //$("#target").bind("drop", highlightTarget);
     $("#target").bind("dropout", resetTarget);
   });
 
-function highlightTarget(event, ui){
-    $("#target").addClass("ui-state-highlight")
-                .html("You got me")
-                //.append(ui.draggable.text());
-} 
+// function highlightTarget(event, ui){
+//     $("#target").addClass("ui-state-highlight")
+//                 .html("You got me")
+//                 //.append(ui.draggable.text());
+// } 
   
 
 function resetTarget(event, ui){
