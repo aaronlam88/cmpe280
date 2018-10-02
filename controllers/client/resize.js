@@ -8,5 +8,17 @@
 // });
 
 $(function(){
-        $( "#resize" ).resizable();
+        $( "#resize" ).resizable({
+                alsoResize: '#content',
+                create: function(event, ui) {
+                        initDiagonal = getContentDiagonal();
+                        initFontSize = parseInt($("#content").css("font-size"));
+                },
+                resize: function(e, ui) {
+                        var newDiagonal = getContentDiagonal();
+                        var ratio = newDiagonal / initDiagonal;
+
+                        $("#content").css("font-size", initFontSize + ratio * 3);
+                }
+        });
 });
