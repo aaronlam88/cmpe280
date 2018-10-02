@@ -22,3 +22,9 @@ $(function(){
                 }
         });
 });
+
+function getContentDiagonal() {
+        var contentWidth = $("#content").width();
+        var contentHeight = $("#content").height();
+        return contentWidth * contentWidth + contentHeight * contentHeight;
+}
