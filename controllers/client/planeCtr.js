@@ -18,17 +18,39 @@ var plantCtr = (function () {
     var image = new Image();
     image.src = "images/plane.png";
 
-    var millisecondPerFrames = 1000/24;
-    var run;
+    var millisecondPerFrames = 1000 / 24;
     // ==== functions ====
-    var init = function() {
-        window.addEventListener('resize', resizeCanvas, false);
+
+    // Returns a function, that, as long as it continues to be invoked, will not
+    // be triggered. The function will be called after it stops being called for
+    // N milliseconds. If `immediate` is passed, trigger the function on the
+    // leading edge, instead of the trailing.
+    function debounce(func, wait, immediate) {
+        var timeout;
+        return function () {
+            var context = this;
+            var args = arguments;
+            var later = function () {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    };
+
+    function init() {
         resizeCanvas();
+        var redraw = debounce(resizeCanvas, 250);
+        window.addEventListener('resize', redraw);
     }
 
-    var resizeCanvas = function () {
+    var run;
+    function resizeCanvas() {
         clearInterval(run);
-        
+
         CANVAS_W = document.getElementById('canvasWrapper').offsetWidth;
         CANVAS_H = 100;
         canvas.width = CANVAS_W;
@@ -37,7 +59,7 @@ var plantCtr = (function () {
         run = setInterval(draw, millisecondPerFrames);
     }
 
-    var draw = function () {
+    function draw() {
         context.clearRect(0, 0, CANVAS_W, CANVAS_H);
 
         if (x > CANVAS_W) x = 0;

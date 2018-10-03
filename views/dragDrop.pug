@@ -1,15 +1,8 @@
 extends layout
 
 block content
-  section(id="banner")
-    h1 Welcome to #{title}
-  section(id="main" class="wrapper")
-    div(class="inner")
-      div(id="canvasWrapper" class="align-left")
-        canvas(id='plane')
-        script(src="/planeCtr.js")
+    section(id="main" class="wrapper")
         div(class="inner")
-            div(class="inner")
             script(src="/dragDrop.js")
             p Please drag countries you want to travel to below desire list!
             <ul id="sortable1" class="connectedSortable">
@@ -24,3 +17,16 @@ block content
             <ul id="sortable2" class="connectedSortable">
                 
             </ul>
+            p Local restaurant you are interest!
+            <ul id="sortable3" class="connectedSortable">
+                <li class="ui-state-default">Chef Chang</li>
+                <li class="ui-state-default">Panda Express</li>
+                <li class="ui-state-default">Burger Master</li>
+                <li class="ui-state-default">French Town</li>
+                <li class="ui-state-default">Garden</li>
+            </ul>
+            span
+                p Liked!
+                    <ul id="sortable4" class="connectedSortable">
+                
+                    </ul>
