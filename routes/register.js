@@ -9,7 +9,7 @@ var users = require('../json_objects/users.json');
 var registerCtr = require('../controllers/server/registerCtr');
 
 router.get('/', function (req, res, next) {
-    if (req.session.token) {
+    if (req.session.username && req.session.token) {
         var username = req.session.username
         res.render('profile', { username: username, token: req.session.token, user: users[username], message: "You already registered!" });
     } else {

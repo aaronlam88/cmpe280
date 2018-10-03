@@ -10,7 +10,7 @@ var googleMap = (function () {
     // ==== functions ====
     function mapInit() {
         var mapProp = {
-            center: new google.maps.LatLng(37.3351916,-121.8832655),
+            center: new google.maps.LatLng(37.3351916, -121.8832655),
             zoom: 12,
         };
         var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
@@ -23,5 +23,3 @@ var googleMap = (function () {
 })();
 
 // ==== onload --> call the following functions ====
-
-
