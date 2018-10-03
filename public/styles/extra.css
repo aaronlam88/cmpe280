@@ -1,4 +1,6 @@
 @import url(search.css);
 @import url(home.css);
 @import url(draggable.css);
+@import url(resize.css);
+@import url(dragDrop.css);
 @import url(error.css);
