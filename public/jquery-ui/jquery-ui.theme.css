@@ -29,11 +29,11 @@
 	font-size: 1em;
 }
 .ui-widget.ui-widget-content {
-	border: 1px solid #aeeaea;
+	border: 1px solid #aed0ea;
 }
 .ui-widget-content {
 	border: 1px solid #dddddd;
-	background: #bbcdda url("images/ui-bg_highlight-hard_100_f2f5f7_1x100.png") 50% top repeat-x;
+	background: #f2f5f7 url("images/ui-bg_highlight-hard_100_f2f5f7_1x100.png") 50% top repeat-x;
 	color: #362b36;
 }
 .ui-widget-content a {
