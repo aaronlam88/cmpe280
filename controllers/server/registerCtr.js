@@ -51,7 +51,7 @@ var registerCtr = (function () {
 
     // to handle form submission, validate before submit
     // TODO: show error on form instead of using alert
-    var onsubmit = function () {
+    function onsubmit() {
         var result = this.validate();
         if (!result.pass) {
             alert(result.errorMessage);
@@ -67,7 +67,7 @@ var registerCtr = (function () {
      * 
      * @param {*} checkObj if null use document.getElementById(regex.Key)
      */
-    var validate = function (checkObj) {
+    function validate(checkObj) {
         var result = {
             errorMessage: "",
             pass: false
