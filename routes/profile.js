@@ -11,7 +11,7 @@ var token = undefined;
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    if (req.session.username && req.session.username === username && req.session.token && req.session.token === token) {
+    if (req.session.username && req.session.token) {
         res.render('profile', { username: username, token: token });
     } else {
         res.render('login', { error: { message: "You need to login first!" } });
