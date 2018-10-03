@@ -5,7 +5,6 @@
 // include the javascript file in the correct pug file that need this javascript
 // think of this as your class (in ES6 we will have class)
 var GoogleMap = function (x, y, z) {
-    // ==== functions ====
       var location = {lat: x, lng: y};
 
       var map = new google.maps.Map(document.getElementById("googleMap"), {
@@ -40,8 +39,4 @@ var GoogleMap = function (x, y, z) {
           infowindow.open(map, this);
         });
       }
-    // expose functions or variables in the return
-    // ==> make functions or variables in the return public
 };
-
-// ==== onload --> call the following functions ====
