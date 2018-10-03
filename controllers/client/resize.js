@@ -1,0 +1,4 @@
+$(function () {
+    $("#resizeable").resizable();
+    
+  });
