@@ -12,7 +12,7 @@ var dashboard = (function () {
     var currentURL = 'http://' + window.location.hostname +':' + window.location.port
     // ==== functions ====
     function init() {
-        getData(currentURL + '/api');
+        getData(currentURL + '/api/mockusers');
     }
 
     function getData(url) {
