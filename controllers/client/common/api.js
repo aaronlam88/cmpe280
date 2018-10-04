@@ -3,7 +3,7 @@
  */
 const api = {
     /**
-     * get data from backend server using jQuery get or local cache with localStorage
+     * get data from backend server using jQuery get
      * will call $.get, will do window.dispatchEvent(url)
      * to get the data, use window.addEventListener(url, (event) => (event.data))
      * @param {string} url 
