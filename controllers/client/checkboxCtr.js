@@ -11,7 +11,7 @@ var checkboxCtr = (function () {
 
     // to handle form submission, validate before submit
     // TODO: show error on form instead of using alert
-    var onsubmit = function (options) {
+    function onsubmit(options) {
         var result = this.validate(document.getElementsByName(options));
         if (!result.pass) {
             alert(result.errorMessage);
@@ -20,8 +20,8 @@ var checkboxCtr = (function () {
         return true;
     };
 
-    
-    var validate = function (options) {
+
+    function validate(options) {
         var result = {
             errorMessage: "",
             pass: false
@@ -31,7 +31,7 @@ var checkboxCtr = (function () {
             for (var i = 0, len = options.length; i < len; ++i) {
                 if (options[i].checked) {
                     result.pass = true;
-                    return result; 
+                    return result;
                 }
             }
         } catch (error) {

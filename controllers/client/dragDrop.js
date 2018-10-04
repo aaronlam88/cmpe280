@@ -3,3 +3,9 @@ $( function() {
       connectWith: ".connectedSortable"
     }).disableSelection();
   } );
+
+  $( function() {
+    $( "#sortable3, #sortable4" ).sortable({
+      connectWith: ".connectedSortable"
+    }).disableSelection();
+  } );
