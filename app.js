@@ -51,6 +51,7 @@ app.use('/clock', require('./routes/clock'));
 //app.use('/draggable', require('./routes/draggable'));
 app.use('/dragDrop', require('./routes/dragDrop'));
 app.use('/resize', require('./routes/resize'));
+app.use('/search_info', require('./routes/search_info'));
 
 
 // catch 404 and forward to error handler
