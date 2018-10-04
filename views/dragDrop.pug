@@ -1,0 +1,32 @@
+extends layout
+
+block content
+    section(id="main" class="wrapper")
+        div(class="inner")
+            script(src="/dragDrop.js")
+            p Please drag countries you want to travel to below desire list!
+            <ul id="sortable1" class="connectedSortable">
+        
+                <li class="ui-state-default">China</li>
+                <li class="ui-state-default">Japan</li>
+                <li class="ui-state-default">India</li>
+                <li class="ui-state-default">French</li>
+                <li class="ui-state-default">German</li>
+            </ul>
+            p Desire list!
+            <ul id="sortable2" class="connectedSortable">
+                
+            </ul>
+            p Local restaurant you are interest!
+            <ul id="sortable3" class="connectedSortable">
+                <li class="ui-state-default">Chef Chang</li>
+                <li class="ui-state-default">Panda Express</li>
+                <li class="ui-state-default">Burger Master</li>
+                <li class="ui-state-default">French Town</li>
+                <li class="ui-state-default">Garden</li>
+            </ul>
+            span
+                p Liked!
+                    <ul id="sortable4" class="connectedSortable">
+                
+                    </ul>

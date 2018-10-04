@@ -1,0 +1,22 @@
+h3.ui-widget-header{
+    font-size: 1.2em;
+    color: #5385c1;
+ 
+    overflow: hidden;
+}
+ul {
+    font-size: 0.7em;
+    margin: 10px;
+    color: #5385c1;
+    overflow: hidden;
+    }
+#resize {
+    width: 130px;
+    height: 40px;
+    padding: 0.5em;
+    min-height: 50px;
+    min-width: 130px;
+    overflow: hidden;
+    
+
+}

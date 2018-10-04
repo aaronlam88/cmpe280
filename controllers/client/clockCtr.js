@@ -14,13 +14,13 @@ var clockCtr = (function () {
 
     // ==== functions ====
 
-    var drawClock = function () {
+    function drawClock() {
         drawFace(ctx, radius);
         drawNumbers(ctx, radius);
         drawTime(ctx, radius);
     };
 
-    var drawFace = function (ctx, radius) {
+    function drawFace(ctx, radius) {
         var grad;
         ctx.beginPath();
         ctx.arc(0, 0, radius, 0, 2 * Math.PI);
@@ -39,7 +39,7 @@ var clockCtr = (function () {
         ctx.fill();
     };
 
-    var drawNumbers = function (ctx, radius) {
+    function drawNumbers(ctx, radius) {
         var ang;
         var num;
         ctx.font = radius * 0.15 + "px arial";
@@ -57,7 +57,7 @@ var clockCtr = (function () {
         }
     };
 
-    var drawTime = function (ctx, radius) {
+    function drawTime(ctx, radius) {
         var now = new Date();
         var hour = now.getHours();
         var minute = now.getMinutes();
@@ -76,7 +76,7 @@ var clockCtr = (function () {
         drawHand(ctx, second, radius * 0.9, radius * 0.02);
     };
 
-    var drawHand = function (ctx, pos, length, width) {
+    function drawHand(ctx, pos, length, width) {
         ctx.beginPath();
         ctx.lineWidth = width;
         ctx.lineCap = "round";

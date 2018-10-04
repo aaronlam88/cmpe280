@@ -4,6 +4,8 @@ block content
   section(id="main" class="wrapper")
     div(class="inner")
       header(class="align-center")
+        if error
+          h4(class="error-message")=error.message
         h2 Login
       div(class="box")
         div(class="align-center")

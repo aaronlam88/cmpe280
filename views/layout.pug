@@ -3,17 +3,32 @@ html
   head
     title= title
     //- for SOE
-    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="viewport" content="width=device-width initial-scale=1")
     meta(name="Description" content="A travel helper website")
 
     //- for Progressive Web App
     meta(name="theme-color" content="#5385c1")
 
+    //- icon
     link(rel='shortcut icon' type='image/x-icon' href='/favicon.ico')
-    link(rel='stylesheet', href='/styles/templated/assets/css/font-awesome.min.css')
-    link(rel='stylesheet', href='/styles/templated/assets/css/main.css')
-    link(rel='stylesheet', href='/styles/extra.css')
-    
+
+    //- css files
+    link(rel='stylesheet' href='/styles/templated/assets/css/font-awesome.min.css')
+    link(rel='stylesheet' href='/styles/templated/assets/css/main.css')
+    link(rel='stylesheet' href='/styles/extra.css')
+    link(rel='stylesheet' href='/styles/dragDrop.css')
+    link(rel='stylesheet' href='/styles/resize.css')
+    //- NOTE: The following js files had to be in the following order
+    //- jquery
+    script(src="/jquery-ui/external/jquery/jquery.js")
+    //- jquery-ui
+    script(src="/jquery-ui/jquery-ui.js")
+    link(rel="stylesheet" href="/jquery-ui/jquery-ui.css")
+
+    //- javascript for template
+    script(src="/styles/templated/assets/js/skel.min.js")
+    script(src="/styles/templated/assets/js/util.js")
+    script(src="/styles/templated/assets/js/main.js")
 
   body(class="subpage")
 
@@ -28,7 +43,10 @@ html
           a(href="/checkbox") Explore 
           a(href="/search") Search
           a(href="/about") About
+          a(href="/dashboard") Dashboard
           a(href="/clock") clock
+          a(href="/dragDrop") dragDrop
+          a(href="/resize") resize
         a(href="#navPanel" class="navPanelToggle")
           span(class="fa fa-bars")
 
@@ -54,8 +72,4 @@ html
               li
                 a(href="#" class="icon fa-pinterest-p")
                   span(class="label") Pinterest
-
-        script(src="/styles/templated/assets/js/jquery.min.js")
-        script(src="/styles/templated/assets/js/skel.min.js")
-        script(src="/styles/templated/assets/js/util.js")
-        script(src="/styles/templated/assets/js/main.js")
+        
