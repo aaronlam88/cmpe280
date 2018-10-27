@@ -11,6 +11,16 @@
 [http://54.176.230.26:3000/]
 
 # Versions
+## Assignment 4
+* __Branch:__ assignment4 (git checkout assignment4)
+* __Feature:__
+    * Update package.json --> use npx to run nodemon (use local nodemon instead of global, make `npm run devinstall` optional)
+    * Bug fix for login/logout, register
+    * Add demo from jquery-ui
+        * Draggable
+        * Resize
+    * Add demo from jquery
+        * jquery get request from backend (/dashboard)
 ## Assignment 3
 * __Branch:__ assignment3 (git checkout assignment3)
 * __Feature:__ 
@@ -43,7 +53,6 @@ npm start
 ## Install
 ```
 npm install
-npm run devinstall
 ```
 
 ## To run with hot reload
@@ -81,6 +90,8 @@ express_app/
 │   └── styles
 ├── controllers
 │   ├── client
+│   │   └── common
+│   │       └── app.js
 │   └── server
 ├── routes
 │   ├── about.js
@@ -104,10 +115,11 @@ express_app/
     ├── register.pug
     └── search.pug
 ```
-- __bin/www__ is the starting point for this app--> For catching error
+- __bin/www__ is the starting point for this app
 - __app.js__ is the entry point for this app
 - __routes/__ handle routing endpoint and routing logic. Each JS file will attach to 1 endpoint and handle the routing logic for that endpoint. Avoid using a single route file to avoid git conflict/error, and make collaboration easier.
 - __controllers/client/__ contain all the JavaScript files for front-end, **this directory is _PUBLIC_**
+- __controllers/client/common__ contain all common JavaScript librarys for client side, **this directory is _PUBLIC_**
 - __controllers/server/__ contain all the JavaScript files for back-end
 - __views/__ contain all the template files to render a webpage for an endpoint. Pug is used because Jade is now Pug.
 - __public/__ contain CSS style and static pages, **this directory is _PUBLIC_**

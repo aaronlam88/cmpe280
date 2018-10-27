@@ -18,5 +18,11 @@
     "morgan": "^1.9.1",
     "nodemon": "^1.18.4",
     "pug": "^2.0.3"
+  },
+  "dependencies": {
+    "install": "^0.12.2",
+    "mongodb": "^3.1.8",
+    "monk": "^6.0.6",
+    "npm": "^6.4.1"
   }
 }

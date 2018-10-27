@@ -12,6 +12,16 @@ var logger = require('morgan');
 
 var app = express();
 
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('18.207.178.32:27017/Sindy_tb')
+
+app.use(function(req, res, next){
+            req.db = db;
+            next();
+});
+
+
 // setup compression, use gzip to improve performance
 app.use(compression())
 
@@ -51,6 +61,8 @@ app.use('/clock', require('./routes/clock'));
 //app.use('/draggable', require('./routes/draggable'));
 app.use('/dragDrop', require('./routes/dragDrop'));
 app.use('/resize', require('./routes/resize'));
+app.use('/indexdb', require('./routes/userdb'));
+
 
 
 // catch 404 and forward to error handler
