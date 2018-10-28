@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  section(id="main" class="wrapper")
+    div(class="inner align-center" name="tableWithData")
+      table
+        tr
+          th(class="align-center") _id
+          th(class="align-center") id
+          th(class="align-center") name
+        each user in data  
+          tr
+            td=user._id
+            td=user.id
+            td=user.name
+              

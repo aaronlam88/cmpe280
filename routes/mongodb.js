@@ -31,22 +31,14 @@ var updateDataFieldError = {
     stack: 'Require: data field must be of JSON type object and NOT Array'
 };
 
-// default route
-router.get('/', function (req, res, next) {
-    res.json(help);
-});
-
 // create a connection to database
 var database = new Database();
 
-// create collection
-router.get('/createCollection', function (req, res, next) {
-    var collection = req.query.collection;
-    if (typeof collection !== 'string') {
-        return res.render('error', { error: collectionFieldError });
-    }
-    database.createCollection(res, collection);
+// default route
+router.get('/', function (req, res, next) {
+    database.find("user", res);
 });
+
 router.post('/createCollection', function (req, res, next) {
     var collection = req.body.collection;
     if (typeof collection !== 'string') {
@@ -56,6 +48,7 @@ router.post('/createCollection', function (req, res, next) {
 });
 
 // insert data into collection
+/**
 router.get('/insert', function (req, res, next) {
     var collection = req.query.collection;
     if (typeof collection !== 'string') {
@@ -67,19 +60,23 @@ router.get('/insert', function (req, res, next) {
     }
     database.insert(res, collection, data);
 });
+*/
+
 router.post('/insert', function (req, res, next) {
     var collection = req.body.collection;
     if (typeof collection !== 'string') {
         return res.render('error', { error: collectionFieldError });
     }
     var data = req.body.data;
-    if (!Array.isArray(data) || data.length === 0) {
-        return res.render('error', { error: insertDataFieldError });
-    }
+    // if (!Array.isArray(data) || data.length === 0) {
+    //     return res.render('error', { error: insertDataFieldError });
+    // }
     database.insert(res, collection, data);
 });
 
 // update data into collection
+
+/**
 router.get('/update', function (req, res, next) {
     var collection = req.query.collection;
     if (typeof collection !== 'string') {
@@ -95,6 +92,8 @@ router.get('/update', function (req, res, next) {
     }
     database.update(res, collection, query, data);
 });
+*/
+
 router.post('/update', function (req, res, next) {
     var collection = req.body.collection;
     if (typeof collection !== 'string') {
@@ -112,17 +111,22 @@ router.post('/update', function (req, res, next) {
 });
 
 // find data into collection
+
+/**
 router.get('/find', function (req, res, next) {
-    var collection = req.query.collection;
+    var collection = req.body.collection;
     if (typeof collection !== 'string') {
         return res.render('error', { error: collectionFieldError });
     }
-    var data = JSON.parse(req.query.data || "{}");
-    if (typeof data !== 'object' || Array.isArray(data)) {
-        return res.render('error', { error: findDataFieldError });
-    }
+    var data = req.body.data;
+    // var data = JSON.parse(req.query.data || "{}");
+    // if (typeof data !== 'object' || Array.isArray(data)) {
+    //     return res.render('error', { error: findDataFieldError });
+    // }
     database.find(res, collection, data);
 });
+*/
+
 router.post('/find', function (req, res, next) {
     var collection = req.body.collection;
     if (typeof collection !== 'string') {
@@ -136,6 +140,8 @@ router.post('/find', function (req, res, next) {
 });
 
 // find and remove data into collection
+
+/**
 router.get('/findAndRemove', function (req, res, next) {
     var collection = req.query.collection;
     if (typeof collection !== 'string') {
@@ -147,6 +153,8 @@ router.get('/findAndRemove', function (req, res, next) {
     }
     database.findAndRemove(res, collection, data);
 });
+*/
+
 router.post('/findAndRemove', function (req, res, next) {
     var collection = req.body.collection;
     if (typeof collection !== 'string') {
