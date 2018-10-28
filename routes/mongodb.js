@@ -28,7 +28,6 @@ router.get('/insert', function (req, res, next) {
 });
 
 router.post('/insert', function (req, res, next) {
-    console.log(req.body);
     var collection = req.body.collection;
     var data = req.body.data;
     res.json(database.insert(collection, data));

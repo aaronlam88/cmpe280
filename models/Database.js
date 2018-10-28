@@ -5,7 +5,7 @@ const MongoClient = require('mongodb').MongoClient;
 // Default connection url
 var _url = 'mongodb://18.207.178.32:27017';
 // Default database Name
-var _database = 'aaronDB';
+var _database = 'cmpe280';
 
 /**
  * Constructor for Database
