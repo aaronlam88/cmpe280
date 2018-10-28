@@ -47,6 +47,7 @@ app.use('/explore', require('./routes/explore'));
 app.use('/search', require('./routes/search'));
 app.use('/dashboard', require('./routes/dashboard'));
 app.use('/api', require('./routes/api'));
+app.use('/mongodb', require('./routes/mongodb'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
