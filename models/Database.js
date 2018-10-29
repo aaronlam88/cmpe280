@@ -1,6 +1,7 @@
 "use strict";
 
 const MongoClient = require('mongodb').MongoClient;
+const Monk = require('monk');
 
 // Default connection url
 var _url = 'mongodb://18.207.178.32:27017';
@@ -23,12 +24,11 @@ class Database {
         // Connection url
         _url = url || _url;
         // connect to database
-        MongoClient.connect(_url, { useNewUrlParser: true }, function (error, database) {
-            if (error) {
-                console.log(error);
-                throw error;
+        _database = Monk(_url + '/' + _databaseName, (err, database) => {
+            if(err) {
+                console.log(err);
+                throw err;
             }
-            _database = database.db(_databaseName);
         });
     }
 
@@ -37,12 +37,13 @@ class Database {
      * @param {object} respond Express.respond object, use to respond to a request
      * @param {string} collection name of the collection
      */
+
     createCollection(respond, collection) {
         if (!collection) {
             respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
         }
         try {
-            _database.createCollection(collection, function (error, result) {
+            _database.create(collection, function (error, result) {
                 if (error) {
                     console.log(error);
                     throw error;
@@ -61,33 +62,33 @@ class Database {
         }
     }
 
+
     /**
      * insert data into collection
      * @param {object} respond Express.respond object, use to respond to a request
      * @param {string} collection name of the collection
-     * @param {Array} data an array of json object 
+     * @param {Array} data an array of json object
      */
     insert(respond, collection, data) {
         if (!collection) {
             respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
         }
         try {
-            _database.collection(collection).insertMany(data, function (error, result) {
+            _database.get(collection).insert(data, function (error, result) {
                 if (error) {
                     console.log(error);
                     throw error;
                 }
-                console.log(`${result.insertedCount} object(s) inserted into collection [${collection}]`);
-
+                // console.log(`${result.insertedCount} object(s) inserted into collection [${collection}]`);
+                console.log(result);
                 // you can do respond.render(view, data) here
                 respond.json({
                     status: 'OK',
-                    message: `${result.insertedCount} object(s) inserted into collection [${collection}]`,
+                    // message: `${result.insertedCount} object(s) inserted into collection [${collection}]`,
                     data: result
                 });
             });
-        }
-        catch (error) {
+        } catch (error) {
             respond.json({ 'status': 'ERROR', 'message': error });
         }
     }
@@ -98,7 +99,7 @@ class Database {
         }
 
         try {
-            _database.collection(collection).find(data).toArray(function (error, result) {
+            _database.get(collection).find(data, function (error, result) {
                 if (error) {
                     console.log(error);
                     throw error;
@@ -107,7 +108,7 @@ class Database {
                 // you can do respond.render(view, data) here
                 respond.json({
                     status: 'OK',
-                    message: `find ${JSON.stringify(data)} in collection [${collection}]`,
+                    // message: `find ${JSON.stringify(data)} in collection [${collection}]`,
                     data: result
                 });
             });
@@ -123,7 +124,7 @@ class Database {
         }
 
         try {
-            _database.collection(collection).findAndRemove(data, function (error, result) {
+            _database.collection(collection).remove(data, function (error, result) {
                 if (error) {
                     console.log(error);
                     throw error;
@@ -132,7 +133,7 @@ class Database {
                 // you can do respond.render(view, data) here
                 respond.json({
                     status: 'OK',
-                    message: `findAndRemove ${JSON.stringify(data)} in collection [${collection}]`,
+                    // message: `findAndRemove ${JSON.stringify(data)} in collection [${collection}]`,
                     data: result
                 });
             });
@@ -148,7 +149,7 @@ class Database {
         }
 
         try {
-            _database.collection(collection).update(query, { $set: data }, function (error, result) {
+            _database.get(collection).update(query, { $set: data }, {"multi":true}, function (error, result) {
                 if (error) {
                     console.log(error);
                     throw error;
@@ -163,6 +164,24 @@ class Database {
             });
         }
         catch (error) {
+            respond.json({ 'status': 'ERROR', 'message': error });
+        }
+    }
+
+    find(collection, respond) {
+        try {
+            _database.get(collection).find({}, function(error, docs) {
+                if (error) {
+                    console.log(error);
+                    throw error;
+                }
+                //render view here;
+                respond.render('mon_index', {"data" : docs});
+                
+                console.log(docs);
+            });
+        }
+        catch (err) {
             respond.json({ 'status': 'ERROR', 'message': error });
         }
     }
