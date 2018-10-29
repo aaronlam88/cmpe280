@@ -11,6 +11,13 @@
 [http://54.176.230.26:3000/]
 
 # Versions
+## Assignment 5
+* __Branch:__ assignment5 (git checkout assignment5)
+* __Feature:__
+    * Update package.json --> add mongodb and monk npm packages
+    * Clean up code for unused features from Assignment4
+    * Add MongoDB feature (/mongodb)
+        * Allow user to do insert/find/remove/update on mongodb using web interface
 ## Assignment 4
 * __Branch:__ assignment4 (git checkout assignment4)
 * __Feature:__
@@ -81,6 +88,9 @@ express_app/
 │   └── www
 ├── json_objects
 │   └── users.json
+├── models
+│   ├── Database.js
+│   └── template.js
 ├── node_modules
 │   └── ...
 ├── package-lock.json
@@ -123,6 +133,7 @@ express_app/
 - __controllers/server/__ contain all the JavaScript files for back-end
 - __views/__ contain all the template files to render a webpage for an endpoint. Pug is used because Jade is now Pug.
 - __public/__ contain CSS style and static pages, **this directory is _PUBLIC_**
+- __models/__ contain models for database
 
 # Credit
 This web app uses a CSS template from [https://templated.co/]

@@ -3,13 +3,6 @@
 // const MongoClient = require('mongodb').MongoClient;
 const Monk = require('monk');
 
-// Default connection url
-var _url = 'mongodb://18.207.178.32:27017';
-// Default database name
-var _databaseName = 'cmpe280';
-// Database
-var _database = undefined;
-
 class Database {
     /**
      * If you want to connect to a database other than the default, give a databaseName in the param
@@ -18,12 +11,20 @@ class Database {
      * @param {string} url mongodb url, default: 'mongodb://18.207.178.32:27017'
      */
     constructor(databaseName, url) {
+        // Set default variables
+        // Default connection url
+        this._url = 'mongodb://18.207.178.32:27017';
+        // Default database name
+        this._databaseName = 'cmpe280';
+
+        // Override the default if needed
         // Database Name
-        _databaseName = databaseName || _databaseName;
+        this._databaseName = databaseName || this._databaseName;
         // Connection url
-        _url = url || _url;
-        // connect to database
-        _database = Monk(_url + '/' + _databaseName, function (error) {
+        this._url = url || this._url;
+
+        // Setup Database connection
+        this._database = Monk(this._url + '/' + this._databaseName, function (error) {
             if (error) {
                 console.log(error);
                 throw error;
@@ -41,7 +42,7 @@ class Database {
             respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
         }
         try {
-            _database.create(collection, function (error) {
+            this.this._database.create(collection, function (error) {
                 if (error) {
                     console.log(error);
                     throw error;
@@ -72,7 +73,7 @@ class Database {
             respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
         }
         try {
-            _database.get(collection).insert(data, function (error, result) {
+            this._database.get(collection).insert(data, function (error, result) {
                 if (error) {
                     console.log(error);
                     throw error;
@@ -103,7 +104,7 @@ class Database {
         }
         try {
 
-            _database.get(collection).find(data, function (error, result) {
+            this._database.get(collection).find(data, function (error, result) {
                 if (error) {
                     console.log(error);
                     throw error;
@@ -134,7 +135,7 @@ class Database {
         }
 
         try {
-            _database.collection(collection).remove(data, function (error, result) {
+            this._database.collection(collection).remove(data, function (error, result) {
                 if (error) {
                     console.log(error);
                     throw error;
@@ -166,7 +167,7 @@ class Database {
         }
 
         try {
-            _database.get(collection).update(query, { $set: data }, { "multi": true }, function (error, result) {
+            this._database.get(collection).update(query, { $set: data }, { "multi": true }, function (error, result) {
                 if (error) {
                     console.log(error);
                     throw error;
