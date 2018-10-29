@@ -100,6 +100,8 @@ express_app/
 │   └── styles
 ├── controllers
 │   ├── client
+│   │   └── common
+│   │       └── app.js
 │   └── server
 ├── routes
 │   ├── about.js
@@ -127,6 +129,7 @@ express_app/
 - __app.js__ is the entry point for this app
 - __routes/__ handle routing endpoint and routing logic. Each JS file will attach to 1 endpoint and handle the routing logic for that endpoint. Avoid using a single route file to avoid git conflict/error, and make collaboration easier.
 - __controllers/client/__ contain all the JavaScript files for front-end, **this directory is _PUBLIC_**
+- __controllers/client/common__ contain all common JavaScript librarys for client side, **this directory is _PUBLIC_**
 - __controllers/server/__ contain all the JavaScript files for back-end
 - __views/__ contain all the template files to render a webpage for an endpoint. Pug is used because Jade is now Pug.
 - __public/__ contain CSS style and static pages, **this directory is _PUBLIC_**
