@@ -1,16 +1,9 @@
 "use strict";
 
-const MongoClient = require('mongodb').MongoClient;
-
-// Default connection url
-var _url = 'mongodb://18.207.178.32:27017';
-// Default database name
-var _databaseName = 'cmpe280';
-// Database
-var _database = undefined;
+// const MongoClient = require('mongodb').MongoClient;
+const Monk = require('monk');
 
 class Database {
-
     /**
      * If you want to connect to a database other than the default, give a databaseName in the param
      * If you want to connect to a different mongodb host other than the default, give the url in the param
@@ -18,17 +11,24 @@ class Database {
      * @param {string} url mongodb url, default: 'mongodb://18.207.178.32:27017'
      */
     constructor(databaseName, url) {
+        // Set default variables
+        // Default connection url
+        this._url = 'mongodb://18.207.178.32:27017';
+        // Default database name
+        this._databaseName = 'cmpe280';
+
+        // Override the default if needed
         // Database Name
-        _databaseName = databaseName || _databaseName;
+        this._databaseName = databaseName || this._databaseName;
         // Connection url
-        _url = url || _url;
-        // connect to database
-        MongoClient.connect(_url, { useNewUrlParser: true }, function (error, database) {
+        this._url = url || this._url;
+
+        // Setup Database connection
+        this._database = Monk(this._url + '/' + this._databaseName, function (error) {
             if (error) {
                 console.log(error);
                 throw error;
             }
-            _database = database.db(_databaseName);
         });
     }
 
@@ -42,7 +42,7 @@ class Database {
             respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
         }
         try {
-            _database.createCollection(collection, function (error, result) {
+            this.this._database.create(collection, function (error) {
                 if (error) {
                     console.log(error);
                     throw error;
@@ -61,44 +61,50 @@ class Database {
         }
     }
 
+
     /**
      * insert data into collection
      * @param {object} respond Express.respond object, use to respond to a request
      * @param {string} collection name of the collection
-     * @param {Array} data an array of json object 
+     * @param {Array} data an array of json object
      */
     insert(respond, collection, data) {
         if (!collection) {
             respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
         }
         try {
-            _database.collection(collection).insertMany(data, function (error, result) {
+            this._database.get(collection).insert(data, function (error, result) {
                 if (error) {
                     console.log(error);
                     throw error;
                 }
-                console.log(`${result.insertedCount} object(s) inserted into collection [${collection}]`);
-
+                console.log(`${result.length} object(s) inserted into collection [${collection}]`);
+                console.log(result);
                 // you can do respond.render(view, data) here
                 respond.json({
                     status: 'OK',
-                    message: `${result.insertedCount} object(s) inserted into collection [${collection}]`,
+                    message: `${result.length} object(s) inserted into collection [${collection}]`,
                     data: result
                 });
             });
-        }
-        catch (error) {
+        } catch (error) {
             respond.json({ 'status': 'ERROR', 'message': error });
         }
     }
 
+    /**
+     * find document id by data in collection
+     * @param {object} respond Express.respond object, use to respond to a request 
+     * @param {string} collection name of the collection 
+     * @param {object} data an json object (not array) with {key: value}
+     */
     find(respond, collection, data) {
         if (!collection) {
             respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
         }
-
         try {
-            _database.collection(collection).find(data).toArray(function (error, result) {
+
+            this._database.get(collection).find(data, function (error, result) {
                 if (error) {
                     console.log(error);
                     throw error;
@@ -117,13 +123,19 @@ class Database {
         }
     }
 
+    /**
+     * find document identify by data and remove it from the collection
+     * @param {object} respond Express.respond object, use to respond to a request 
+     * @param {string} collection name of the collection 
+     * @param {object} data an json object (not array) with {key: value}
+     */
     findAndRemove(respond, collection, data) {
         if (!collection) {
             respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
         }
 
         try {
-            _database.collection(collection).findAndRemove(data, function (error, result) {
+            this._database.collection(collection).remove(data, function (error, result) {
                 if (error) {
                     console.log(error);
                     throw error;
@@ -142,13 +154,20 @@ class Database {
         }
     }
 
+    /**
+     * update the document identify by query with new value in data
+     * @param {object} respond Express.respond object, use to respond to a request 
+     * @param {string} collection name of the collection
+     * @param {object} query an json object (not array) with {key: value}
+     * @param {object} data an json object (not array) with {key: value}
+     */
     update(respond, collection, query, data) {
         if (!collection) {
             respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
         }
 
         try {
-            _database.collection(collection).update(query, { $set: data }, function (error, result) {
+            this._database.get(collection).update(query, { $set: data }, { "multi": true }, function (error, result) {
                 if (error) {
                     console.log(error);
                     throw error;

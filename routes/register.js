@@ -6,7 +6,9 @@ var router = express.Router();
 var fs = require('fs');
 var users = require('../json_objects/users.json');
 
-var registerCtr = require('../controllers/server/registerCtr');
+var RegisterCtr = require('../controllers/server/RegisterCtr');
+
+var registerCtr = new RegisterCtr();
 
 router.get('/', function (req, res, next) {
     if (req.session.username && req.session.token) {

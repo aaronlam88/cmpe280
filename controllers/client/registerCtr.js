@@ -57,7 +57,7 @@ var registerCtr = (function () {
         var result = this.validate();
         if (!result.pass) {
             alert(result.errorMessage);
-            return false; // disable this to redirect to error page
+            // return false; // disable this to redirect to error page
         }
         return true;
     };

@@ -9,7 +9,7 @@ var dashboard = (function () {
     var container = document.getElementById('userTable');
     var table = document.createElement('table');
     table.classList.add('alt')
-    var currentURL = 'http://' + window.location.hostname +':' + window.location.port
+    var currentURL = 'http://' + window.location.hostname +':' + window.location.port;
     // ==== functions ====
     function init() {
         getData(currentURL + '/api/mockusers');
