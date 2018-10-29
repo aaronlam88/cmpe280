@@ -69,28 +69,19 @@ class Database {
      * @param {string} collection name of the collection
      * @param {Array} data an array of json object
      */
-    insert(respond, collection, data) {
+    insert(res, collection, data) {
         if (!collection) {
             respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
         }
-        try {
-            _database.get(collection).insert(data, function (error, result) {
-                if (error) {
-                    console.log(error);
-                    throw error;
-                }
-                // console.log(`${result.insertedCount} object(s) inserted into collection [${collection}]`);
-                console.log(result);
-                // you can do respond.render(view, data) here
-                respond.json({
-                    status: 'OK',
-                    // message: `${result.insertedCount} object(s) inserted into collection [${collection}]`,
-                    data: result
-                });
-            });
-        } catch (error) {
-            respond.json({ 'status': 'ERROR', 'message': error });
+
+        _database.get(collection).insert(data, function(err, doc) {
+          if(err) {
+            console.log(err);
+            res.render("error", err);
+          } else {
+            res.redirect("/mongodb");
         }
+      });
     }
 
     find(respond, collection, data) {
@@ -122,24 +113,18 @@ class Database {
         if (!collection) {
             respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
         }
-
-        try {
-            _database.collection(collection).remove(data, function (error, result) {
-                if (error) {
-                    console.log(error);
-                    throw error;
-                }
-                console.log(result);
-                // you can do respond.render(view, data) here
-                respond.json({
-                    status: 'OK',
-                    // message: `findAndRemove ${JSON.stringify(data)} in collection [${collection}]`,
-                    data: result
-                });
-            });
-        }
-        catch (error) {
-            respond.json({ 'status': 'ERROR', 'message': error });
+        if (Object.keys(data).length === 0 && data.constructor === Object) {
+            respond.render("error", { 'status': 'ERROR', 'message': 'Missing parameters!' });
+        } else {
+            _database.get(collection).remove(data, function(err, doc) {
+            if(err) {
+              console.log(err);
+              respond.render("error", err);
+            } else {
+              console.log(doc.result);
+              respond.redirect("/mongodb");
+            }
+          });
         }
     }
 
@@ -156,11 +141,7 @@ class Database {
                 }
                 console.log(result);
                 // you can do respond.render(view, data) here
-                respond.json({
-                    status: 'OK',
-                    message: `update ${JSON.stringify(query)} in collection [${collection}]`,
-                    data: result
-                });
+                respond.redirect("/mongodb");
             });
         }
         catch (error) {
@@ -177,7 +158,7 @@ class Database {
                 }
                 //render view here;
                 respond.render('mon_index', {"data" : docs});
-                
+
                 console.log(docs);
             });
         }
