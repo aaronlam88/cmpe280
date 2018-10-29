@@ -1,0 +1,49 @@
+extends layout
+
+block content
+  section(id="main" class="wrapper")
+    div(class="inner align-center" name="tableWithData")
+      table
+        tr
+          th(class="align-center") _id
+          th(class="align-center") id
+          th(class="align-center") name
+        each user in data  
+          tr
+            td=user._id
+            td=user.id
+            td=user.name 
+      h2 Modification      
+      div(class="inner row align-center" style="display:table")
+        div(class="column")
+          form(action="")
+            |id:
+            br
+            input(type="text" name="id")
+            |name
+            br  
+            input(type="text" name="name")
+            br
+            div(class="row")
+              div(class="column")
+                button(type="submit" name="Insert") Insert
+              div(class="column")  
+                button(type="submit" name="Update") Delete
+        div(class="column")
+          form(action="")
+            |filter-id
+            br
+            input(type="text" name="filterid")   
+            |filter-name
+            br
+            input(type="text" name="filtername")   
+            |id:
+            br
+            input(type="text" name="id")
+            |name
+            br  
+            input(type="text" name="name")
+            br  
+            div(class="row")
+              div(class="column")
+                button(type="submit" name="Update") Update
