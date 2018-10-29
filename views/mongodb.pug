@@ -7,62 +7,64 @@ block content
         if error
           h4(class="error-message")=error.message
         h2 MongoDB Web Interface
-      div(class="box")
-        div(class="align-center")
+      
+      div(class="row")
+        div(class="box 6u 12u$(small)")
+          div(class="align-center")
+            h3 Insert
+            form(target="dummyframe" id="insert" onsubmit="return mongodbCtr.insert()")
+              div(class="row uniform")
+                div(class="12u$")
+                  input(name="collection" id="collection" type="text" required placeholder="collection")
+                div(class="12u$")
+                  textarea(name="data" id="data" rows="5" required placeholder="data: [{}] array of json object")
+                div(class="12u$")
+                  ul(class="actions")
+                    li
+                      input(type="Submit" value="Insert" class="button special fit")
 
-          h3 Insert
-          form(target="dummyframe" id="insert" onsubmit="return mongodbCtr.insert()")
-            div(class="row uniform")
-              div(class="12u$")
-                input(name="collection" id="collection" type="text" required placeholder="collection")
-              div(class="12u$")
-                textarea(name="data" id="data" rows="5" required placeholder="data: [{}] array of json object")
-              div(class="12u$")
-                ul(class="actions")
-                  li
-                    input(type="Submit" value="Insert" class="button special fit")
+            h3 Find
+            form(target="dummyframe" id="find" onsubmit="return mongodbCtr.find()")
+              div(class="row uniform")
+                div(class="12u$")
+                  input(name="collection" id="collection" type="text" required placeholder="collection")
+                div(class="12u$")
+                  textarea(name="data" id="data" rows="5" placeholder="data: {} json object")
+                div(class="12u$")
+                  ul(class="actions")
+                    li
+                      input(type="Submit" value="Find" class="button special fit")
 
-          h3 Find
-          form(target="dummyframe" id="find" onsubmit="return mongodbCtr.find()")
-            div(class="row uniform")
-              div(class="12u$")
-                input(name="collection" id="collection" type="text" required placeholder="collection")
-              div(class="12u$")
-                textarea(name="data" id="data" rows="5" placeholder="data: {} json object")
-              div(class="12u$")
-                ul(class="actions")
-                  li
-                    input(type="Submit" value="Find" class="button special fit")
+            h3 Remove
+            form(target="dummyframe" id="remove" onsubmit="return mongodbCtr.remove()")
+              div(class="row uniform")
+                div(class="12u$")
+                  input(name="collection" id="collection" type="text" required placeholder="collection")
+                div(class="12u$")
+                  textarea(name="data" id="data" rows="5" required placeholder="data: {} json object")
+                div(class="12u$")
+                  ul(class="actions")
+                    li
+                      input(type="Submit" value="Remove" class="button special fit")
 
-          h3 Remove
-          form(target="dummyframe" id="remove" onsubmit="return mongodbCtr.remove()")
-            div(class="row uniform")
-              div(class="12u$")
-                input(name="collection" id="collection" type="text" required placeholder="collection")
-              div(class="12u$")
-                textarea(name="data" id="data" rows="5" required placeholder="data: {} json object")
-              div(class="12u$")
-                ul(class="actions")
-                  li
-                    input(type="Submit" value="Remove" class="button special fit")
+            h3 Update
+            form(target="dummyframe" id="update" onsubmit="return mongodbCtr.update()")
+              div(class="row uniform")
+                div(class="12u$")
+                  input(name="collection" id="collection" type="text" required placeholder="collection:string")
+                div(class="12u$")
+                  input(name="query" id="query" type="text" required placeholder="query: {key: value}")
+                div(class="12u$")
+                  textarea(name="data" id="data" rows="5" required placeholder="data: {} json object")
+                div(class="12u$")
+                  ul(class="actions")
+                    li
+                      input(type="Submit" value="Update" class="button special fit")
 
-          h3 Update
-          form(target="dummyframe" id="update" onsubmit="return mongodbCtr.update()")
-            div(class="row uniform")
-              div(class="12u$")
-                input(name="collection" id="collection" type="text" required placeholder="collection:string")
-              div(class="12u$")
-                input(name="query" id="query" type="text" required placeholder="query: {key: value}")
-              div(class="12u$")
-                textarea(name="data" id="data" rows="5" required placeholder="data: {} json object")
-              div(class="12u$")
-                ul(class="actions")
-                  li
-                    input(type="Submit" value="Update" class="button special fit")
-
-        iframe(width="0" height="0" border="0" name="dummyframe" id="dummyframe")
-
-        div(class="box")
+          iframe(width="0" height="0" border="0" name="dummyframe" id="dummyframe")
+        
+        div(class="box 6u 12u$(small)")
+          h3(class="align-center") Result
           pre
             code(id="result")
 
