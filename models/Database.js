@@ -1,6 +1,6 @@
 "use strict";
 
-const MongoClient = require('mongodb').MongoClient;
+// const MongoClient = require('mongodb').MongoClient;
 const Monk = require('monk');
 
 // Default connection url
@@ -11,7 +11,6 @@ var _databaseName = 'cmpe280';
 var _database = undefined;
 
 class Database {
-
     /**
      * If you want to connect to a database other than the default, give a databaseName in the param
      * If you want to connect to a different mongodb host other than the default, give the url in the param
@@ -24,10 +23,10 @@ class Database {
         // Connection url
         _url = url || _url;
         // connect to database
-        _database = Monk(_url + '/' + _databaseName, (err, database) => {
-            if(err) {
-                console.log(err);
-                throw err;
+        _database = Monk(_url + '/' + _databaseName, function (error) {
+            if (error) {
+                console.log(error);
+                throw error;
             }
         });
     }
@@ -37,13 +36,12 @@ class Database {
      * @param {object} respond Express.respond object, use to respond to a request
      * @param {string} collection name of the collection
      */
-
     createCollection(respond, collection) {
         if (!collection) {
             respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
         }
         try {
-            _database.create(collection, function (error, result) {
+            _database.create(collection, function (error) {
                 if (error) {
                     console.log(error);
                     throw error;
@@ -79,12 +77,12 @@ class Database {
                     console.log(error);
                     throw error;
                 }
-                // console.log(`${result.insertedCount} object(s) inserted into collection [${collection}]`);
+                console.log(`${result.length} object(s) inserted into collection [${collection}]`);
                 console.log(result);
                 // you can do respond.render(view, data) here
                 respond.json({
                     status: 'OK',
-                    // message: `${result.insertedCount} object(s) inserted into collection [${collection}]`,
+                    message: `${result.length} object(s) inserted into collection [${collection}]`,
                     data: result
                 });
             });
@@ -93,12 +91,18 @@ class Database {
         }
     }
 
+    /**
+     * find document id by data in collection
+     * @param {object} respond Express.respond object, use to respond to a request 
+     * @param {string} collection name of the collection 
+     * @param {object} data an json object (not array) with {key: value}
+     */
     find(respond, collection, data) {
         if (!collection) {
             respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
         }
-
         try {
+
             _database.get(collection).find(data, function (error, result) {
                 if (error) {
                     console.log(error);
@@ -108,7 +112,7 @@ class Database {
                 // you can do respond.render(view, data) here
                 respond.json({
                     status: 'OK',
-                    // message: `find ${JSON.stringify(data)} in collection [${collection}]`,
+                    message: `find ${JSON.stringify(data)} in collection [${collection}]`,
                     data: result
                 });
             });
@@ -118,6 +122,12 @@ class Database {
         }
     }
 
+    /**
+     * find document identify by data and remove it from the collection
+     * @param {object} respond Express.respond object, use to respond to a request 
+     * @param {string} collection name of the collection 
+     * @param {object} data an json object (not array) with {key: value}
+     */
     findAndRemove(respond, collection, data) {
         if (!collection) {
             respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
@@ -133,7 +143,7 @@ class Database {
                 // you can do respond.render(view, data) here
                 respond.json({
                     status: 'OK',
-                    // message: `findAndRemove ${JSON.stringify(data)} in collection [${collection}]`,
+                    message: `findAndRemove ${JSON.stringify(data)} in collection [${collection}]`,
                     data: result
                 });
             });
@@ -143,13 +153,20 @@ class Database {
         }
     }
 
+    /**
+     * update the document identify by query with new value in data
+     * @param {object} respond Express.respond object, use to respond to a request 
+     * @param {string} collection name of the collection
+     * @param {object} query an json object (not array) with {key: value}
+     * @param {object} data an json object (not array) with {key: value}
+     */
     update(respond, collection, query, data) {
         if (!collection) {
             respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
         }
 
         try {
-            _database.get(collection).update(query, { $set: data }, {"multi":true}, function (error, result) {
+            _database.get(collection).update(query, { $set: data }, { "multi": true }, function (error, result) {
                 if (error) {
                     console.log(error);
                     throw error;
@@ -164,24 +181,6 @@ class Database {
             });
         }
         catch (error) {
-            respond.json({ 'status': 'ERROR', 'message': error });
-        }
-    }
-
-    find(collection, respond) {
-        try {
-            _database.get(collection).find({}, function(error, docs) {
-                if (error) {
-                    console.log(error);
-                    throw error;
-                }
-                //render view here;
-                respond.render('mon_index', {"data" : docs});
-                
-                console.log(docs);
-            });
-        }
-        catch (err) {
             respond.json({ 'status': 'ERROR', 'message': error });
         }
     }
