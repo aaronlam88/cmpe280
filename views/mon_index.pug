@@ -16,7 +16,7 @@ block content
       h2 Modification      
       div(class="inner row align-center" style="display:table")
         div(class="column")
-          form(action="")
+          form(id="insertAndDelete" method="post")
             |id:
             br
             input(type="text" name="id")
@@ -24,26 +24,21 @@ block content
             br  
             input(type="text" name="name")
             br
-            div(class="row")
-              div(class="column")
-                button(type="submit" name="Insert") Insert
-              div(class="column")  
-                button(type="submit" name="Update") Delete
+            button(form="insertAndDelete" formaction="mongodb/insert" type="submit") Insert
+            button(form="insertAndDelete" formaction="mongodb/findAndRemove" type="submit") Delete  
         div(class="column")
-          form(action="")
-            |filter-id
+          form(id="update" method="post")
+            |query-id
             br
-            input(type="text" name="filterid")   
-            |filter-name
+            input(type="text" name="q_id")
+            |query-name
             br
-            input(type="text" name="filtername")   
+            input(type="text" name="q_name")   
             |id:
             br
-            input(type="text" name="id")
+            input(type="text" name="u_id")
             |name
             br  
-            input(type="text" name="name")
+            input(type="text" name="u_name")
             br  
-            div(class="row")
-              div(class="column")
-                button(type="submit" name="Update") Update
+            button(form="update" formaction="mongodb/update" type="submit") Update
