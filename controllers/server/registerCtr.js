@@ -51,7 +51,7 @@ class RegisterCtr {
      * actual form validation work is done here
      * if there is any error in the form, return pass=false, else pass=true
      * if pass=false, error can be found in errorMessage in the return object
-     * 
+     *
      * @param {*} checkObj
      */
     validate(checkObj) {
