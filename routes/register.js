@@ -6,7 +6,7 @@ var router = express.Router();
 var fs = require('fs');
 var users = require('../json_objects/users.json');
 
-var RegisterCtr = require('../controllers/server/RegisterCtr');
+var RegisterCtr = require('../controllers/server/registerCtr');
 
 var registerCtr = new RegisterCtr();
 
