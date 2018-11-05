@@ -1,20 +1,10 @@
 var ctx = document.getElementById("myChart");
-var currentURL = 'http://' + window.location.hostname + ':' + window.location.port;
-
-window.addEventListener('dataIsReady', (event) => {
-  var d = event.data.data[0].data;
-  // var temp = (d) => {
-  //
-  // }
-
-
-  var options =
-  {
-    type: 'bubble',
+var myChart = new Chart(ctx, {
+    type: 'scatter',
     data: {
         datasets: [{
             label: 'Scatter',
-            data: d,
+            data: [{x:123, y:123} , {x:5432, y:6}],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -41,13 +31,6 @@ window.addEventListener('dataIsReady', (event) => {
               position: 'bottom'
           }]
         },
-        responsive: 'false'
+        responsive: false
     }
-  }
-  var myChart = new Chart(ctx, options);
 });
-
-var find = function() {
-    var data = {"collection": "chart_data", "data":{}};
-    api.jQueryPost(currentURL + '/mongodb/find', data, 'dataIsReady');
-}();

@@ -1,25 +1,41 @@
 "use strict"
-const Monk = require('monk');
 var express = require('express');
 var router = express.Router();
-var collection = Monk("//18.207.178.32:27017/cmpe280");
+var monk = require('monk');
+var database = monk("mongodb://18.207.178.32:27017/cmpe280")
+var collection = database.get('hotel_review');
 
 // default route
 router.get('/', function (req, res, next) {
-    var data = [];
-    // collection.get('hotel_review').find({},{longitude:0, latitude:1}).each = function(docs) {
-    //   long.push(parseInt(docs.longitude));
-    //   console.log(docs);
-    // }
-    console.log('asdf');
-    collection.get('hotel_review').find({},{longitude:0, latitude:1}).each((doc, {close,pause,resume}) => {
-      data.push(doc);
-    }).then(() => {
-      console.log('done');
-      console.log(data);
-    });
+    // var allData = []
+    // collection.find({},{latitude:1, longitude:1}, () => {}).each(docs => {
+    //   allData.push({x: parseFloat(docs.latitude), y:parseFloat(docs.longitude)});
+    // }).then(() => {
+    //   console.log('done!');
+    // }).catch(err => {
+    //   console.log(err);
+    // })
+    //
+    // var options = {
+    //   type: 'scatter',
+    //   data: {
+    //     datasets: [{
+    //       label: 'Scatter',
+    //       data: allData
+    //     }]
+    //   },
+    //   options: {
+    //     scales: {
+    //       xAxes: [{
+    //         type: 'linear',
+    //         position: 'bottom'
+    //       }]
+    //     },
+    //     responsive: false
+    //   }
+    // };
 
-    res.render('chart', {'data' : data});
+    res.render('chart');
 });
 
 module.exports = router;
