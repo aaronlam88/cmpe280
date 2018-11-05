@@ -8,13 +8,13 @@ window.addEventListener('dataIsReady', (event) => {
   var d = event.data.data[0].data;
   var city = [];
   var count = [];
-  for (var i=0; i < d.length-1; i++) {
-    city.push(d[i]['city']);
+  for (var i=0; i < 10; i++) {
+    city.push(d[i]['city'].split(',')[0]);
     count.push(d[i]['count']);
   }
   var options =
   {
-    type: 'horizontalBar',
+    type: 'bar',
     data: {
         labels: city,
         datasets: [{
