@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  section(class="wrapper")
+    div(class="inner align-center")
+      canvas(class="align-center" id="myChart" width="1152" height="400")
+      script .var data = "#{data}"
+      script(src='/common/api.js')
+      script(src='/chartCtr.js')
