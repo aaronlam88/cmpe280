@@ -50,6 +50,7 @@ app.use('/api', require('./routes/api'));
 app.use('/mongodb', require('./routes/mongodb'));
 app.use('/chart', require('./routes/chart'));
 app.use('/data', require('./routes/dataDashboard'));
+app.use('/tableau', require('./routes/tableau1'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

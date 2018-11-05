@@ -5,7 +5,7 @@ var router = express.Router();
 
 /* GET search page. */
 router.get('/', function (req, res, next) {
-    res.render('dashboard-tableau');
+    res.render('tableau1');
 });
 
 module.exports = router;
