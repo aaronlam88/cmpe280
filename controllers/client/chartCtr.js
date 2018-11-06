@@ -182,7 +182,7 @@ window.addEventListener('dataIsReady_3', (event) => {
           callbacks: {
             label: function(tooltipItem, data) {
               // console.log(data.datasets1[0].data[0]);
-              return label = data.datasets1[0].data[tooltipItem.datasetIndex];
+              return label = data.datasets1[0].data[tooltipItem.index];
               // return label = data.datasets1.data[0][tooltipItem.datasetsIndex];
             }
           }
@@ -194,10 +194,81 @@ window.addEventListener('dataIsReady_3', (event) => {
         legend: {
           display: false
         },
+        scales: {
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Latitude'
+            }
+          }],
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Longitude'
+            }
+          }]
+        },
         responsive: 'true'
       }
   };
   var myChart3 = new Chart(ctx3, options3);
+});
+
+window.addEventListener('dataIsReady_4', (event) => {
+  var d = event.data.data[0].data;
+  console.log(d);
+  var name = [];
+  var score = [];
+  for (var i=0; i < 10; i++) {
+    name.push(d[i]['name']);
+    score.push(d[i]['score']);
+  }
+
+  var options4 = {
+      type: 'polarArea',
+      data: {
+          labels: name,
+          datasets: [{
+              data: score,
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)',
+                  'rgba(151, 239, 144, 0.2)',
+                  'rgba(116, 68, 88, 0.2)',
+                  'rgba(238, 181, 86, 0.2)',
+                  'rgba(70, 219, 17, 0.2)'
+              ],
+              borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(151, 239, 144, 1)',
+                'rgba(116, 68, 88, 1)',
+                'rgba(238, 181, 86, 1)',
+                'rgba(70, 219, 17, 1)'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+        title: {
+          display: true,
+          text: "Top 10 Cities Average Score"
+        },
+        legend: {
+          display: false
+        },
+        responsive: 'true'
+      }
+  };
+  var myChart4 = new Chart(ctx4, options4);
 });
 
 var find = function() {
@@ -213,4 +284,9 @@ var find_2 = function() {
 var find_3 = function() {
     var data = {"collection": "chart_data", "data":{"id":4}};
     api.jQueryPost(currentURL + '/mongodb/find', data, 'dataIsReady_3');
+}();
+
+var find_4 = function() {
+    var data = {"collection": "chart_data", "data":{"id":5}};
+    api.jQueryPost(currentURL + '/mongodb/find', data, 'dataIsReady_4');
 }();

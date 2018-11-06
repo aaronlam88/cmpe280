@@ -9,7 +9,34 @@ var collection = database.get('hotel_review');
 router.get('/', function (req, res, next) {
     // var allData = {};
     // var arr = [];
-    // var cities = ["Alexandria","Newburgh","San Antonio","Biloxi","Waterville","Virginia Beach","West Yarmouth","New York","Long Beach"];
+    // var cities = ["Alexandria","Newburgh","San Antonio","Biloxi","Waterville","Virginia Beach","West Yarmouth","New York","Long Beach","Las Vegas"];
+    // collection.find({"city":{"$in": cities}}).each(docs => {
+    //   var name = String(docs['city']);
+    //   var score = docs['reviews_rating'];
+    //   if(!(name in allData)) {
+    //     allData[name] = [];
+    //   }
+    //   if(score !== '') {
+    //     allData[name].push(score);
+    //   }
+    // }).then(() => {
+    //   console.log(allData);
+    //   for (var key in allData) {
+    //     var sum = 0;
+    //     var temp = allData[key];
+    //     for (var i=0; i<temp.length; i++) {
+    //       sum += parseFloat(temp[i]);
+    //     }
+    //     var avg = sum/temp.length;
+    //     arr.push({"name": key, "score": avg});
+    //   }
+    //   database.get('chart_data').insert({"data":arr , "id":5}).then(()=>{}).catch(err=>{
+    //     console.log(err);
+    //   });
+    // }).catch(err => {
+    //   console.log(err);
+    // });
+
     // collection.find({"city":{"$in": cities}}).each(docs => {
     //   var category = docs.categories;
     //   if (!(category in allData)) {
@@ -64,7 +91,7 @@ router.get('/', function (req, res, next) {
     // }).catch((err) => {
     //   console.log(err);
     // });
-    // 
+    //
     res.render('chart');
 });
 
