@@ -7,16 +7,31 @@ var collection = database.get('hotel_review');
 
 // default route
 router.get('/', function (req, res, next) {
-//     var allData = []
-//     collection.find({},{latitude:1, longitude:1}, () => {}).each(docs => {
-//       allData.push({x: parseFloat(docs.latitude), y:parseFloat(docs.longitude)});
-//     }).then(() => {
-//       console.log('done!');
-//     }).catch(err => {
-//       console.log(err);
-//     })
-//
-
+    // var allData = {};
+    // var arr = [];
+    // var cities = ["Alexandria","Newburgh","San Antonio","Biloxi","Waterville","Virginia Beach","West Yarmouth","New York","Long Beach"];
+    // collection.find({"city":{"$in": cities}}).each(docs => {
+    //   var category = docs.categories;
+    //   if (!(category in allData)) {
+    //     allData[category] = 1;
+    //   }
+    //   else {
+    //     allData[category] += 1;
+    //   }
+    // }).then(() => {
+    //   for (var key in allData) {
+    //       let temp = {"category": key, "count": allData[key]};
+    //       arr.push(temp);
+    //     }
+    //
+    //   database.get('chart_data').insert({"data":arr , "id":3}).then(()=>{}).catch(err=>{
+    //       console.log(err);
+    //     });
+    //   console.log('done!');
+    // }).catch((err) => {
+    //   console.log(err);
+    // });
+    //
     // function sortByKey(array, key) {
     //     return array.sort(function(a, b) {
     //         var x = a[key]; var y = b[key];
@@ -26,26 +41,30 @@ router.get('/', function (req, res, next) {
     // var allData = {};
     // var arr = [];
     // collection.find({}, () => {}).each(docs => {
-    //   var city = docs.city + ", " + docs.province + ", " + docs.postalCode;
-    //   if(!(city in allData)) {
-    //     allData[city] = 1;
+    //   var bussiness = docs.name + ", " + docs.city + ", " + docs.province;
+    //   var location = docs.latitude + ", " + docs.longitude;
+    //   if(!(bussiness in allData)) {
+    //     allData[bussiness] = {};
+    //     allData[bussiness]['count'] = 1;
+    //     allData[bussiness]['location'] = location;
     //   }
     //   else {
-    //     allData[city] += 1;
+    //     allData[bussiness]['count']+= 1;
     //   }
     // }).then(() => {
     //   for (var key in allData) {
-    //     let temp = {"city": key, "count": allData[key]};
+    //     let temp = {"bussiness": key, "count": allData[key]['count'], "location":allData[key]['location']};
     //     arr.push(temp);
     //   }
     //   var t = sortByKey(arr, 'count').slice(0,11);
-    //   database.get('chart_data').insert({"data":t , "id":2}).then(()=>{}).catch(err=>{
+    //   console.log(t);
+    //   database.get('chart_data').insert({"data":t , "id":4}).then(()=>{}).catch((err) => {
     //     console.log(err);
     //   });
-    //   console.log('done!');
-    // }).catch(err => {
+    // }).catch((err) => {
     //   console.log(err);
     // });
+    // 
     res.render('chart');
 });
 
