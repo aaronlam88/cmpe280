@@ -30,6 +30,12 @@ class Database {
                 throw error;
             }
         });
+
+        this.error = {
+            collection: { status: 'ERROR', message: 'Missing collection!'},
+            jsonObject: {status: 'ERROR', message: 'Data is not a JSON object!'},
+            arrayObject: {status: 'ERROR', message: 'Data is not an array of JSON!'}
+        }
     }
 
     /**
@@ -39,7 +45,9 @@ class Database {
      */
     createCollection(respond, collection) {
         if (!collection) {
-            respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
+            console.log(this.error.collection);
+            respond.json(this.error.collection);
+            return
         }
         try {
             this.this._database.create(collection, function (error) {
@@ -70,7 +78,14 @@ class Database {
      */
     insert(respond, collection, data) {
         if (!collection) {
-            respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
+            console.log(this.error.collection);
+            respond.json(this.error.collection);
+            return
+        }
+        if (!Array.isArray(data)) {
+            console.log(this.error.arrayObject);
+            respond.json(this.error.arrayObject);
+            return;
         }
         try {
             this._database.get(collection).insert(data, function (error, result) {
@@ -79,7 +94,6 @@ class Database {
                     throw error;
                 }
                 console.log(`${result.length} object(s) inserted into collection [${collection}]`);
-                console.log(result);
                 // you can do respond.render(view, data) here
                 respond.json({
                     status: 'OK',
@@ -100,16 +114,22 @@ class Database {
      */
     find(respond, collection, data) {
         if (!collection) {
-            respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
+            console.log(this.error.collection);
+            respond.json(this.error.collection);
+            return
+        }
+        if (typeof data !== 'object' || Array.isArray(data)) {
+            console.log(this.error.jsonObject);
+            respond.json(this.error.jsonObject);
+            return;
         }
         try {
-
             this._database.get(collection).find(data, function (error, result) {
                 if (error) {
                     console.log(error);
                     throw error;
                 }
-                console.log(result);
+                console.log(`find ${JSON.stringify(data)} in collection [${collection}]`);
                 // you can do respond.render(view, data) here
                 respond.json({
                     status: 'OK',
@@ -131,16 +151,22 @@ class Database {
      */
     findAndRemove(respond, collection, data) {
         if (!collection) {
-            respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
+            console.log(this.error.collection);
+            respond.json(this.error.collection);
+            return
         }
-
+        if (typeof data !== 'object' || Array.isArray(data)) {
+            console.log(this.error.jsonObject);
+            respond.json(this.error.jsonObject);
+            return;
+        }
         try {
             this._database.collection(collection).remove(data, function (error, result) {
                 if (error) {
                     console.log(error);
                     throw error;
                 }
-                console.log(result);
+                console.log(`findAndRemove ${JSON.stringify(data)} in collection [${collection}]`);
                 // you can do respond.render(view, data) here
                 respond.json({
                     status: 'OK',
@@ -163,9 +189,15 @@ class Database {
      */
     update(respond, collection, query, data) {
         if (!collection) {
-            respond.json({ 'status': 'ERROR', 'message': 'Missing collection!' });
+            console.log(this.error.collection);
+            respond.json(this.error.collection);
+            return
         }
-
+        if (typeof data !== 'object' || Array.isArray(data)) {
+            console.log(this.error.jsonObject);
+            respond.json(this.error.jsonObject);
+            return;
+        }
         try {
             this._database.get(collection).update(query, { $set: data }, { "multi": true }, function (error, result) {
                 if (error) {

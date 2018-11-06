@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  <!--canvas(class="align-center" id="myChart" width="1152" height="400")-->
+  <!--script.var data = "#{data}"-->
+  <!--script(src='/common/api.js')-->
+  <!--script(src='/chartCtr.js')-->
+  div(class='tableauPlaceholder' style='width: 1440px; height: 678px;')
+    object(class='tableauViz' width='1440' height='678' style='display:none;')
+      param(name='host_url' value='https://us-west-2b.online.tableau.com/')
+      param(name='embed_code_version' value='3')
+      param(name='site_root' value='/t/webkeepers')
+      param(name='name' value='HotelRestaurantOverview/Dashboard1')
+      param(name='tabs' value='no')
+      param(name='toolbar' value='no')
+      param(name='showAppBanner' value='false')
+      param(name='filter' value='iframeSizedToWindow=true')
+    
+  script(type='text/javascript' src='https://us-west-2b.online.tableau.com/javascripts/api/viz_v1.js')
+  
