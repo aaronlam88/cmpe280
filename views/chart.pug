@@ -1,9 +1,16 @@
 extends layout
 
 block content
-  section(class="wrapper")
-    div(class="inner align-center")
-      canvas(class="align-center" id="myChart" width="1152" height="400")
-      script .var data = "#{data}"
-      script(src='/common/api.js')
-      script(src='/chartCtr.js')
+  section.wrapper
+    div(class="align-center inner" style="display:table;")
+      div(class="row")
+        div
+          canvas(id="myChart1" width="500" height="300" aria-label="chart1")
+        div
+          canvas(id="myChart2" width="500" height="300" aria-label="chart2")
+        div
+          canvas(id="myChart3" width="500" height="300" aria-label="chart3")
+        div
+          canvas(id="myChart4" width="500" height="300" aria-label="chart4")
+  script(src='/common/api.js')
+  script(src='/chartCtr.js')
