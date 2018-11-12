@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  section(id="main" class="wrapper")
+    div(class="inner")
+      header(class="align-center")
+        h2 Dashboard2
+      div(id="US-headMap" style="height:500px")
+      div(id="avgRatingVerticalBarChart" style="height:500px")
+      div(id="avgRatingHorizontalBarChart" style="height:500px")
+    script(src="/common/api.js")
+    script(src="/dashboardCtr2.js")

@@ -32,26 +32,41 @@ html
 
     //- chart.js
     script(src='/chartjs/Chart.bundle.min.js')
+
+    //- amChart.js
+    script(src="https://www.amcharts.com/lib/3/amcharts.js")
+    script(src="https://www.amcharts.com/lib/3/serial.js")
+    script(src="https://www.amcharts.com/lib/3/ammap.js")
+    script(src="https://www.amcharts.com/lib/3/maps/js/usaLow.js")
+    script(src="https://www.amcharts.com/lib/3/plugins/export/export.min.js")
+
+    script(src="https://www.amcharts.com/lib/3/themes/none.js")
+    script(src="https://www.amcharts.com/lib/3/themes/light.js")
+
+    link(rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all")
+
+
+    
     
   body(class="subpage")
-
-    header(id="header")
-      div(class="inner")
-        a(href="/" class="logo")
-          img(src="/logo.png" alt="TripWiser Logo")
-        nav(id="nav")
-          a(href="/") Home
-          a(href="/profile") Profile
-          a(href="/register") Register
-          a(href="/explore") Explore
-          a(href="/search") Search
-          a(href="/about") About
-          a(href="/dashboard") Dashboard
-          a(href="/mongodb") MongoDB
-          a(href="/data") DataBoard-Tableau
-          a(href="/chart") Dashboard-chartJS
-        a(href="#navPanel" class="navPanelToggle")
-          span(class="fa fa-bars")
+    block head
+      header(id="header")
+        div(class="inner")
+          a(href="/" class="logo")
+            img(src="/logo.png" alt="TripWiser Logo")
+          nav(id="nav")
+            a(href="/") Home
+            a(href="/profile") Profile
+            a(href="/register") Register
+            a(href="/explore") Explore
+            a(href="/search") Search
+            a(href="/about") About
+            a(href="/dashboard") Dashboard
+            a(href="/mongodb") MongoDB
+            a(href="/chart") ChartDemo
+            a(href="/data") DataBoard
+          a(href="#navPanel" class="navPanelToggle")
+            span(class="fa fa-bars")
 
     block content
 

@@ -55,8 +55,8 @@ var api = (function () {
     // expose functions or variables in the return
     // ==> make functions or variables in the return public
     return {
-        jQueryGet: jQueryGet,
-        jQueryPost: jQueryPost
+        get: jQueryGet,
+        post: jQueryPost
     }
 })();
 
