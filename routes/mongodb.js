@@ -22,7 +22,6 @@ router.post('/createCollection', function (req, res, next) {
 router.post('/insert', function (req, res, next) {
     var collection = req.body.collection;
     var data = req.body.data;
-    console.log(data);
     database.insert(res, collection, data);
 });
 
