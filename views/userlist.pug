@@ -1,0 +1,12 @@
+extends layDB
+
+block content
+    h1.
+        User List
+    ul
+        each user in userlist
+            li 
+                body Username:
+                     = user.username
+                body  Password:
+                     = user.password

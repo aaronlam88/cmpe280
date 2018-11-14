@@ -18,22 +18,53 @@ router.get('/mockusers', function (req, res, next) {
     }
 });
 
+//index
 router.get('/userlist', function (req, res, next) {
     var collection = 'test';
     var data = {};
-    database.find(res, collection, data);
-});
+    database._database.get(collection).find(data, {},
+                            function(err,result){
+                                res.render('userlist', { "userlist" : result });
+                            });
+    //database.find(res, collection, data);
+    //res.render('userlist');
 
+});
+// show
 router.get('/userlist/:username', function (req, res, next) {
     var collection = 'test';
     var username = req.params.username;
     var data = {
         username: username
     };
-    database.find(res, collection, data);
+    database._database.get(collection).find(data, 
+                            function(err, doc) 
+                            {
+                            if (err) {
+                            res.send("Find failed.");
+                            }
+                            else {
+                                res.render('showuser', 
+                                     { title: 'Show User: ' + username,
+                                        password: doc[0].password })
+                            }
+                            });
+});
+//new
+router.get('/newuser',function(req, res) 
+{
+    res.render('newuser', { "title": 'Add New User' });
 });
 
-router.get('/newuser', function (req, res, next) {
+//edit
+router.get('/edituser/:username', function (req, res, next) {
+
+    res.render('edituser', { "title": ' Edit User' });
+
+});
+
+//create
+router.post('/adduser', function (req, res, next) {
     var collection = 'test';
     var username = req.body.username;
     var password = req.body.password;
@@ -41,29 +72,24 @@ router.get('/newuser', function (req, res, next) {
         username: username,
         password: password
     };
-    database.find(res, collection, data);
+    database._database.get(collection).insert(data, 
+        function(err, doc) 
+        {
+        if (err) {
+        res.send("Insert failed.");
+        }
+        else {
+            res.redirect("userlist");
+        }
+        });
 });
 
 // TODO: Display form to edit a user
-router.get('/edituser/:username', function (req, res, next) {
 
-});
-
-router.post('/adduser', function (req, res, next) {
+//update
+router.post('/updateuser', function (req, res, next) {
     var collection = 'test';
     var username = req.body.username;
-    var password = req.body.password;
-    var data = [];
-    data.push({
-        username: username,
-        password: password
-    });
-    database.insert(res, collection, data);
-});
-
-router.post('/updateuser/:username', function (req, res, next) {
-    var collection = 'test';
-    var username = req.params.username;
     var password = req.body.password;
     var query = {
         username: username
@@ -72,16 +98,36 @@ router.post('/updateuser/:username', function (req, res, next) {
         username: username,
         password: password
     };
-    database.update(res, collection, query, data);
+    database._database.get(collection).update(query, { $set: data }, { "multi": true }, function (error, result) {
+        if (error) {
+            res.send("Update failed.");
+        }
+        else {
+            // Forward to success page
+            res.redirect("userlist");
+           }
+    });
 });
 
+
+//destory
 router.get('/deleteuser/:username', function (req, res, next) {
     var collection = 'test';
     var username = req.params.username;
+
     var data = {
         username: username
     }
-    database.findAndRemove(res, collection, data);
+    database._database.get(collection).remove( { "username" : username },
+    function (err, doc) 
+    {
+        if (err) {
+            res.send("Delete failed.");
+        }
+        else {
+            res.send("Successfully deleted " + username);
+        }
+    });
 });
 
 module.exports = router;
