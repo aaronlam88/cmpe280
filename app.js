@@ -47,6 +47,7 @@ app.use('/explore', require('./routes/explore'));
 app.use('/search', require('./routes/search'));
 app.use('/dashboard', require('./routes/dashboard'));
 app.use('/api', require('./routes/api'));
+app.use('/ui', require('./routes/ui'));
 app.use('/mongodb', require('./routes/mongodb'));
 app.use('/chart', require('./routes/chart'));
 app.use('/data', require('./routes/dataDashboard'));
