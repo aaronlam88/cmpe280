@@ -44,11 +44,6 @@ router.get('/newuser', function (req, res, next) {
     database.find(res, collection, data);
 });
 
-// TODO: Display form to edit a user
-router.get('/edituser/:username', function (req, res, next) {
-
-});
-
 router.post('/adduser', function (req, res, next) {
     var collection = 'test';
     var username = req.body.username;
