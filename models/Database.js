@@ -95,6 +95,9 @@ class Database {
                 }
                 console.log(`${result.length} object(s) inserted into collection [${collection}]`);
                 // you can do respond.render(view, data) here
+                if(!respond) {
+                    return;
+                }
                 respond.json({
                     status: 'OK',
                     message: `${result.length} object(s) inserted into collection [${collection}]`,
@@ -102,6 +105,10 @@ class Database {
                 });
             });
         } catch (error) {
+            if(!respond) {
+                console.log(error);
+                return;
+            }
             respond.json({ 'status': 'ERROR', 'message': error });
         }
     }

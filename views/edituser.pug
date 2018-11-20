@@ -1,8 +1,0 @@
-extends layDB
-
-block content
-    h1= title
-    form#formAddUser(name="updateuser",method="post",action="/ui/updateuser")
-        input#inputUserName(type="text", placeholder="username", name="username")
-        input#inputUserName(type="text", placeholder="password", name="password")
-        button#btnSubmit(type="submit") submit

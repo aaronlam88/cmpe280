@@ -38,20 +38,16 @@ app.use(session({
 })); // to support session, and setup session
 
 // route --> page
+// home page
 app.use('/', require('./routes/index'));
 app.use('/home', require('./routes/index'));
-app.use('/profile', require('./routes/profile'));
-app.use('/register', require('./routes/register'));
-app.use('/logout', require('./routes/logout'));
-app.use('/explore', require('./routes/explore'));
-app.use('/search', require('./routes/search'));
-app.use('/dashboard', require('./routes/dashboard'));
-app.use('/api', require('./routes/api'));
-app.use('/ui', require('./routes/ui'));
+// about
+// app.use('/about', require('./routes/about'));
+//
+
+// for data api
 app.use('/mongodb', require('./routes/mongodb'));
-app.use('/chart', require('./routes/chart'));
-app.use('/data', require('./routes/dataDashboard'));
-app.use('/tableau', require('./routes/tableau1'));
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
