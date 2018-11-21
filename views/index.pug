@@ -5,16 +5,7 @@ block content
     h1 Welcome to #{title}
   section(id="main" class="wrapper")
     div(class="inner")
-      div(id="canvasWrapper" class="align-left")
-        canvas(id='plane')
-        script(src="/planeCtr.js")
-        div(class="inner")
-            div(class="inner")
-            p Our data visulization was built base on tableau server, please use below username and password to login to tableau server whenever our website ask you the login to see the charts.  Once you login then refresh the page, so you can see the chart.
-            ul(class="icons")
-              li Username: qiyue.zhang@sjsu.edu
-              li Password: hanbaobao8
-            p We have 4 charts for our dataset please click on below link
-            p Click <a href="/tableau">here</a>
-            P To see the Dash board, pleae click "DataBoard" on top right side of menu
-            
+
+  //- script
+  script(src="/common/api.js")
+  script(src="/common/dataAPI.js")
