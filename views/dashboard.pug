@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  section(id="main" class="wrapper")
+    div(class="inner")
+      header(class="align-center")
+        if error
+          h4(class="error-message")=error.message
+        h2 Dashboard
+        div(class="graphAreaWrapper")
+          div(id="us-heatmap-loading" class="lds-default")
+            div
+            div
+            div
+            div
+            div
+            div
+            div
+            div
+            div
+            div
+            div
+            div
+          div(id="us-heatmap" class="graphAreaDiv")
+  script(src="/common/api.js")
+  script(src="/common/graph.js")
+  script(src="/dashboardCtr.js")

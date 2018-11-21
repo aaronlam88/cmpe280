@@ -1,6 +1,7 @@
 doctype html
 html
   head
+    //- ****** START DO NOT TOUCH ******
     title= title
     //- for SOE
     meta(name="viewport" content="width=device-width initial-scale=1")
@@ -27,6 +28,21 @@ html
     script(src="/styles/templated/assets/js/skel.min.js")
     script(src="/styles/templated/assets/js/util.js")
     script(src="/styles/templated/assets/js/main.js")
+    //- ****** END DO NOT TOUCH ******
+    //- extra css
+    link(rel='stylesheet' href="/extra.css")
+
+    //- amChart.js
+    script(src="https://www.amcharts.com/lib/3/amcharts.js")
+    script(src="https://www.amcharts.com/lib/3/serial.js")
+    script(src="https://www.amcharts.com/lib/3/ammap.js")
+    script(src="https://www.amcharts.com/lib/3/maps/js/usaLow.js")
+    script(src="https://www.amcharts.com/lib/3/plugins/export/export.min.js")
+
+    script(src="https://www.amcharts.com/lib/3/themes/none.js")
+    script(src="https://www.amcharts.com/lib/3/themes/light.js")
+
+    link(rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all")
     
   body(class="subpage")
 
