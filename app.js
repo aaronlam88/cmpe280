@@ -51,6 +51,8 @@ app.use('/mongodb', require('./routes/mongodb'));
 // dashboard
 app.use('/dashboard', require('./routes/dashboard'));
 
+app.use('/intro', require('./routes/introduction'));
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
