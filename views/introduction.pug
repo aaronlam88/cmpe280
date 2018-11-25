@@ -2,15 +2,8 @@
 extends layout
 
 block content
-  <!--canvas(class="align-center" id="myChart" width="1152" height="400")-->
-  <!--script.var data = "#{data}"-->
-  <!--script(src='/common/api.js')-->
-  <!--script(src='/chartCtr.js')-->
-  div(class="inner")
-            div(class="inner")
-            p The Map graph below showing the heat map of average review ratings by state, you can filter by different location and time interval on right side
-            p
-  div(class='gallary' style='width: 1440px; height: 611px;')
+  <!--canvas(class="align-center" id="myChart" width="800" height="400")-->
+  div(class='inner' style='width: 600px; height: 400px;')
     #cp_widget_ae2d8472-9d84-458f-b33e-73abf63ff22c ...
     script(type='text/javascript').
         var cpo = []; cpo["_object"] ="cp_widget_ae2d8472-9d84-458f-b33e-73abf63ff22c"; cpo["_fid"] = "AcBAHYerVMHT";
@@ -19,45 +12,7 @@ block content
         cp.async = true; cp.src = "//www.cincopa.com/media-platform/runtime/libasync.js";
         var c = document.getElementsByTagName("script")[0];
         c.parentNode.insertBefore(cp, c); })();
-    noscript
-        span New Gallery 2018/11/22
-        span Park
-        span Explore the west
-        span originaldate
-        span  1/1/0001 6:00:00 AM
-        span width
-        span  800
-        span height
-        span  480
-        span Natural view
-        span Explore the national park
-        span originaldate
-        span  1/1/0001 6:00:00 AM
-        span width
-        span  648
-        span height
-        span  365
-        span Sea
-        span Explore the beach
-        span originaldate
-        span  6/23/2005 1:17:19 AM
-        span width
-        span  1024
-        span height
-        span  768
-        span England
-        span Explore the culture
-        span originaldate
-        span  1/1/0001 6:00:00 AM
-        span width
-        span  961
-        span height
-        span  686
-        span East
-        span Explore Japan
-        span originaldate
-        span  1/1/0001 6:00:00 AM
-        span width
-        span  960
-        span height
-        span  638
+    div(class="inner")
+            div(class="inner")
+            p The Map graph below showing the heat map of average review ratings by state, you can filter by different location and time interval on right side
+            p
