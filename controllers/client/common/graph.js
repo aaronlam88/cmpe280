@@ -1,10 +1,12 @@
 "use strict"; // to avoid bad JavaScript code https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
-
+var states = ['Oregon', 'California', 'Utah', 'Idaho', 'Alaska'];
+var count = Array(5).fill(0);
+var rawData = undefined;
 
 let graph = (function () {
     // ==== class variables ====
     let currentURL = 'http://' + window.location.hostname + ':' + window.location.port;
-    let rawData = undefined;
+
 
     let _USMapData = undefined;
 
@@ -39,6 +41,26 @@ let graph = (function () {
         mapData['US-VT']['count'] = 0;
         rawData.data.forEach(element => {
             if (!element.province || !element.reviews_rating) return;
+            let temp = element.province.toUpperCase();
+            switch(temp) {
+                case 'OR':
+                  count[0]++;
+                  break;
+                case 'CA':
+                  count[1]++;
+                  break;
+                case 'UT':
+                  count[2]++;
+                  break;
+                case 'ID':
+                  count[3]++;
+                  break;
+                case 'AK':
+                  count[4]++;
+                  break;
+                default:
+                  break;
+            }
 
             let location = `${element.country}-${element.province}`;
             mapData[location] = mapData[location] || {};
@@ -108,7 +130,7 @@ let graph = (function () {
                 maxValue: USMapData.max
             }
         });
-        
+
         document.getElementById(`${htmlElementId}-loading`).remove();
         document.getElementById(htmlElementId).style.height = "500px";
     }
