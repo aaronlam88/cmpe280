@@ -1,29 +1,60 @@
 extends layout
 
 block content
-
-  div(class='inner' style='width: 800px; height: 500px;')
-    .slideshow-container
-    // Full-width images with number and caption text
-    .mySlides.fade
-        .numbertext 1 / 3
-        img(src='/images/pic2.png', style='width:100%')
-        .text Caption Text
-    .mySlides.fade
-        .numbertext 2 / 3
-        img(src='/styles/templated/images/pic3.png', style='width:100%')
-        .text Caption Two
-    .mySlides.fade
-        .numbertext 3 / 3
-        img(src='/styles/templated/images/pic5.png', style='width:100%')
-        .text Caption Three
-    // Next and previous buttons
-    a.prev(onclick='plusSlides(-1)') ❮
-    a.next(onclick='plusSlides(1)') ❯
-    br
-    // The dots/circles
-    div(style='text-align:center')
-    span.dot(onclick='currentSlide(1)')
-    span.dot(onclick='currentSlide(2)')
-    span.dot(onclick='currentSlide(3)')
+  section(id="main" class="wrapper")
+    div(class="inner")
+        div(class="align-center")
+            // Slideshow container
+            .slideshow-container
+            // Full-width images with number and caption text
+            .mySlides.fade
+                .numbertext 1 / 3
+                img(src='styles/templated/images/demo1.jpg', style='width:100%')
+                .captext Great National Park
+            .mySlides.fade
+                .numbertext 2 / 3
+                img(src='styles/templated/images/demo2.jpg', style='width:100%')
+                .captext Great Moutain
+            .mySlides.fade
+                .numbertext 3 / 3
+                img(src='styles/templated/images/demo3.jpg', style='width:100%')
+                .captext The view
+                // Next and previous buttons
+            a.prev(onclick='plusSlides(-1)') &#x276E;
+            a.next(onclick='plusSlides(1)') &#x276F;
+            
+            // The dots/circles
+        div(style='text-align:center')
+            span.dot(onclick='currentSlide(1)')
+            span.dot(onclick='currentSlide(2)')
+            span.dot(onclick='currentSlide(3)')
+        p Veja um pouquinho da viagem a Grécia com o projeto Viagem para Mulheres com Denise Tonin. Passamos por Atenas, Mykonos e Santorini! Clique no icone do alto falante para ativar o som!  osemite National Park is in California’s Sierra Nevada mountains. It’s famed for its giant, ancient sequoia trees, and for Tunnel View, the iconic vista of towering Bridalveil Fall and the granite cliffs of El Capitan and Half Dome. In Yosemite Village are shops, restaurants, lodging, the Yosemite Museum and the Ansel Adams Gallery, with prints of the photographer’s renowned black-and-white landscapes of the area.
+        .row
+            .column1
+                .card2
+                img(src='styles/templated/images/img1.jpg', alt='Jane', style='width:100%')
+                .container2
+                    p.title1 Andronis Boutique Hotel
+                    p Andronis Boutique Hotel is situated in the centre of Oia Village, one of the most traditional villages in Santorini island. The property is located on the cliff edge of Oia Village observing the panoramic Caldera View. The Suites are only 30 minutes from Santorini Airport and Athinios Port. Public parking is available near by the Hotel (walking distance).
+                    p question@ABH.com
+                    p
+                    button1.button Detail
+            .column1
+                .card2
+                img(src='styles/templated/images/img2.jpg', alt='Mike', style='width:100%')
+                .container2
+                    p.title1 jfiowhfo
+                    p Some text that describes me lorem ipsum ipsum lorem.
+                    p example@example.com
+                    p
+                    button1.button Detail
+            .column1
+                .card2
+                img(src='styles/templated/images/img3.jpg', alt='John', style='width:100%')
+                .container2
+                    p.title1 Radisson Blu Hotel
+                    p Radisson is an international hotel company and a subsidiary of the Radisson Hotel Group. It operates the brands Radisson, Radisson Blu, Radisson Red, Country Inns and Suites by Radisson and Park Inn by Radisson with more than 990 locations in 73 countries.
+                    p service@radison.com
+                    p
+                    button1.button Search
     script(src="/introCtr.js")
