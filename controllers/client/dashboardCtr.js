@@ -10,6 +10,7 @@ let dashboardCtr = (function () {
     // ==== functions ====
     function init() {
         graph.drawUSMap('us-heatmap');
+        graph.drawUSBarChart('us-barchart');
     }
     // expose functions or variables in the return
     // ==> make functions or variables in the return public

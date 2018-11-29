@@ -4,10 +4,13 @@ block content
   section(id="main" class="wrapper")
     div(class="inner")
       header(class="align-center")
+        //- print error if something wrong
         if error
           h4(class="error-message")=error.message
+        //- title
         h2 Dashboard
-        div(class="graphAreaWrapper")
+        //- us heatmap graph (avg review per state)
+        div(class="wrapper-500")
           div(id="us-heatmap-loading" class="lds-default")
             div
             div
@@ -21,7 +24,25 @@ block content
             div
             div
             div
-          div(id="us-heatmap" class="graphAreaDiv")
+          div(id="us-heatmap")
+        //- us avg review bar chart
+        div(class="wrapper-500")
+          div(id="us-barchart-loading" class="lds-default")
+            div
+            div
+            div
+            div
+            div
+            div
+            div
+            div
+            div
+            div
+            div
+            div
+          div(id="us-barchart")
+
+        
   script(src="/common/api.js")
   script(src="/common/graph.js")
   script(src="/dashboardCtr.js")
