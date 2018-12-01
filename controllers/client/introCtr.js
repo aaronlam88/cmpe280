@@ -19,4 +19,4 @@ var introCtr = (function () {
     }
 })();
 
-introCtr.showSlides();
+//introCtr.showSlides();
