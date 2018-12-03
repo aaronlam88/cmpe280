@@ -9,9 +9,14 @@ let dashboardCtr = (function () {
 
     // ==== functions ====
     function init() {
+        graph.init();
+
         graph.drawUSMap('us-heatmap');
-        graph.drawUSBarChart('us-barchart');
+        graph.drawAllReviewRakingChart('us-rating');
+        graph.drawAllReviewTrend('us-trendline');
+        graph.drawRatingLinesChart('rating-line');
     }
+
     // expose functions or variables in the return
     // ==> make functions or variables in the return public
     return {

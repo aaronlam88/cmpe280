@@ -10,39 +10,59 @@ block content
         //- title
         h2 Dashboard
         //- us heatmap graph (avg review per state)
-        div(class="wrapper-500")
-          div(id="us-heatmap-loading" class="lds-default")
+      div(class="align-center")
+        h3 US Average Review
+        div(id="us-heatmap-loading" class="lds-default")
+          - for(var x = 0; x < 12; x++)
             div
-            div
-            div
-            div
-            div
-            div
-            div
-            div
-            div
-            div
-            div
-            div
-          div(id="us-heatmap")
-        //- us avg review bar chart
-        div(class="wrapper-500")
-          div(id="us-barchart-loading" class="lds-default")
-            div
-            div
-            div
-            div
-            div
-            div
-            div
-            div
-            div
-            div
-            div
-            div
-          div(id="us-barchart")
+        div(id="us-heatmap")
+      hr
+      div(class="row align-center")
+        div(class="6u 12u$(medium)")
+          h3 Review Rating Count
+          div(id="us-rating-loading" class="lds-default")
+            - for(var x = 0; x < 12; x++)
+              div
+          div(id="us-rating")
 
-        
+        div(class="6u 12u$(medium)")
+          h3 Review Count Over Time
+          div(id="us-trendline-loading" class="lds-default")
+            - for(var x = 0; x < 12; x++)
+              div
+          div(id="us-trendline")
+      hr
+      div(class="row align-center")
+        div(class="4u 12u$(medium)")
+          h3 Most Rated State
+          div(class="box")
+            div(id="most-rated-state-loading" class="lds-default")
+              - for(var x = 0; x < 12; x++)
+                div
+            h4(id="most-rated-state")
+        div(class="4u 12u$(medium)")
+          h3 Higest Rated State
+          div(class="box")
+            div(id="highest-rated-state-loading" class="lds-default")
+              - for(var x = 0; x < 12; x++)
+                div
+            h4(id="highest-rated-state")
+        div(class="4u 12u$(medium)")
+          h3 Lowest Rated State
+          div(class="box")
+            div(id="lowest-rated-state-loading" class="lds-default")
+              - for(var x = 0; x < 12; x++)
+                div
+            h4(id="lowest-rated-state")
+      hr
+      div(class="align-center")
+        h3 Rating Trend Over Pass 30 Days
+        div(id="rating-line-loading" class="lds-default")
+          - for(var x = 0; x < 12; x++)
+            div
+        div(id="rating-line")
+
+
   script(src="/common/api.js")
   script(src="/common/graph.js")
   script(src="/dashboardCtr.js")
