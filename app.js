@@ -54,6 +54,11 @@ app.use('/api', require('./routes/api'));
 // dashboard
 app.use('/dashboard', require('./routes/dashboard'));
 
+app.use('/intro2', require('./routes/intro'));
+app.use('/contact', require('./routes/contact'));
+app.use('/overview', require('./routes/overview'));
+app.use('/top', require('./routes/top'));
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
