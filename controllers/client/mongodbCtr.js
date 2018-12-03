@@ -36,7 +36,6 @@ var mongodbCtr = (function () {
         } catch (error) {
             return data;
         }
-        
     }
 
     function insert() {
@@ -47,7 +46,6 @@ var mongodbCtr = (function () {
             return;
         }
         api.jQueryPost(currentURL + '/mongodb/insert', data, 'dataIsReady')
-        
     }
 
     function find() {
@@ -58,7 +56,6 @@ var mongodbCtr = (function () {
             return;
         }
         api.jQueryPost(currentURL + '/mongodb/find', data, 'dataIsReady')
-
     }
 
     function remove() {
@@ -69,7 +66,6 @@ var mongodbCtr = (function () {
             return;
         }
         api.jQueryPost(currentURL + '/mongodb/findAndRemove', data, 'dataIsReady')
-
     }
 
     function update() {
@@ -80,7 +76,6 @@ var mongodbCtr = (function () {
             return;
         }
         api.jQueryPost(currentURL + '/mongodb/update', data, 'dataIsReady')
-
     }
 
     function dataIsReady(data) {

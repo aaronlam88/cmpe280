@@ -45,8 +45,11 @@ app.use('/home', require('./routes/index'));
 // app.use('/about', require('./routes/about'));
 //
 
-// for data api
+// for mongodb api
 app.use('/mongodb', require('./routes/mongodb'));
+
+// for json object api
+app.use('/api', require('./routes/api'));
 
 // dashboard
 app.use('/dashboard', require('./routes/dashboard'));
