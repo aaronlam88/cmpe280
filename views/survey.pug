@@ -4,21 +4,19 @@ extends layout
 block content  
   section(id="main" class="wrapper")
     div(class="inner")
-      link(rel='stylesheet' href='/styles/star.css')
       h3 Rating:
-        span1( class="starRating")
-          input10(id="rating5" type="radio" name="rating" value="5")
-          label10(for="rating5") 5
-          input10(id="rating4" type="radio" name="rating" value="4" checked = "checked")
-          label10(for="rating4") 4
-          input10(id="rating3" type="radio" name="rating" value="3" checked = "checked")
-          label10(for="rating3") 3
-          input10(id="rating2" type="radio" name="rating" value="2")
-          label10(for="rating2") 2
-          input10(id="rating1" type="radio" name="rating" value="1")
-          label10(for="rating1") 1
-      // Form
-     
+      span1( class="rating")
+        input(id="rating5" type="radio" name="rating" value="5")
+        label(for="rating5")
+        input(id="rating4" type="radio" name="rating" value="4")
+        label(for="rating4")
+        input(id="rating3" type="radio" name="rating" value="3")
+        label(for="rating3")
+        input(id="rating2" type="radio" name="rating" value="2")
+        label(for="rating2")
+        input(id="rating1" type="radio" name="rating" value="1")
+        label(for="rating1")
+      //-  Form
       form(method='post' action='#')
         .row.uniform
           .6u(class='12u$(xsmall)')

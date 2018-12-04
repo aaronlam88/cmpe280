@@ -5,28 +5,18 @@ var router = express.Router();
 var us_map = require('../models/state-name.json')
 
 var Database = require('../models/Database');
-var users = require('../json_objects/mockUsers.json');
 
 // create a connection to database
 var database = new Database();
-/* api   */
-router.get('/mockusers', function (req, res, next) {
-    if (req.session.username && req.session.token) {
-        res.setHeader('Content-Type', 'application/json');
-        res.send(users);
-    } else {
-        res.render('dashboard-login', { error: { message: "You need to login first!" } });
-    }
-});
 
 //index
 router.get('/userlist', function (req, res, next) {
     var collection = 'test';
     var data = {};
     database._database.get(collection).find(data, {},
-                            function(err,result){
-                                res.render('userlist', { "userlist" : result });
-                            });
+        function (err, result) {
+            res.render('userlist', { "userlist": result });
+        });
     //database.find(res, collection, data);
     //res.render('userlist');
 
@@ -38,22 +28,22 @@ router.get('/userlist/:username', function (req, res, next) {
     var data = {
         username: username
     };
-    database._database.get(collection).find(data, 
-                            function(err, doc) 
-                            {
-                            if (err) {
-                            res.send("Find failed.");
-                            }
-                            else {
-                                res.render('showuser', 
-                                     { title: 'Show User: ' + username,
-                                        password: doc[0].password })
-                            }
-                            });
+    database._database.get(collection).find(data,
+        function (err, doc) {
+            if (err) {
+                res.send("Find failed.");
+            }
+            else {
+                res.render('showuser',
+                    {
+                        title: 'Show User: ' + username,
+                        password: doc[0].password
+                    })
+            }
+        });
 });
 //new
-router.get('/newuser',function(req, res) 
-{
+router.get('/newuser', function (req, res) {
     res.render('newuser', { "title": 'Add New User' });
 });
 
@@ -73,19 +63,16 @@ router.post('/adduser', function (req, res, next) {
         username: username,
         password: password
     };
-    database._database.get(collection).insert(data, 
-        function(err, doc) 
-        {
-        if (err) {
-        res.send("Insert failed.");
-        }
-        else {
-            res.redirect("userlist");
-        }
+    database._database.get(collection).insert(data,
+        function (err, doc) {
+            if (err) {
+                res.send("Insert failed.");
+            }
+            else {
+                res.redirect("userlist");
+            }
         });
 });
-
-// TODO: Display form to edit a user
 
 //update
 router.post('/updateuser', function (req, res, next) {
@@ -100,15 +87,15 @@ router.post('/updateuser', function (req, res, next) {
         password: password
     };
     database._database.get(collection).update(query, { $set: data }, { "multi": true },
-     function (error, result) {
-        if (error) {
-            res.send("Update failed.");
-        }
-        else {
-            // Forward to success page
-            res.redirect("userlist");
-           }
-    });
+        function (error, result) {
+            if (error) {
+                res.send("Update failed.");
+            }
+            else {
+                // Forward to success page
+                res.redirect("userlist");
+            }
+        });
 });
 
 
@@ -120,18 +107,18 @@ router.get('/deleteuser/:username', function (req, res, next) {
     var data = {
         username: username
     }
-    database._database.get(collection).remove( { "username" : username },
-    function (err, doc) 
-    {
-        if (err) {
-            res.send("Delete failed.");
-        }
-        else {
-            res.send("Successfully deleted " + username);
-        }
-    });
+    database._database.get(collection).remove({ "username": username },
+        function (err, doc) {
+            if (err) {
+                res.send("Delete failed.");
+            }
+            else {
+                res.send("Successfully deleted " + username);
+            }
+        });
+});
 
-  /* GET home page. */
+// us state name
 router.get('/state-name', function (req, res, next) {
     res.json(us_map);
 });

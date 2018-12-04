@@ -45,10 +45,10 @@ app.use('/home', require('./routes/index'));
 // for mongodb api
 app.use('/mongodb', require('./routes/mongodb'));
 
-app.use('/chart', require('./routes/chart'));
-app.use('/data', require('./routes/dataDashboard'));
-app.use('/tableau', require('./routes/tableau1'));
+// review
 app.use('/review', require('./routes/review'));
+
+// survey
 app.use('/survey', require('./routes/survey'));
 
 
