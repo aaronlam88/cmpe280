@@ -1,0 +1,18 @@
+html
+  head
+    meta(charset='UTF-8')
+    title Star rating widget example
+    link(rel='stylesheet', href='/styles/star.css')
+  body
+
+      span.starRating
+        input#rating5(type='radio', name='rating', value='5')
+        label(for='rating5') 5
+        input#rating4(type='radio', name='rating', value='4')
+        label(for='rating4') 4
+        input#rating3(type='radio', name='rating', value='3', checked='')
+        label(for='rating3') 3
+        input#rating2(type='radio', name='rating', value='2')
+        label(for='rating2') 2
+        input#rating1(type='radio', name='rating', value='1')
+        label(for='rating1') 1

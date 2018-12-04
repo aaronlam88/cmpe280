@@ -131,11 +131,12 @@ class Database {
                 }
                 console.log(`find ${JSON.stringify(data)} in collection [${collection}]`);
                 // you can do respond.render(view, data) here
-                respond.json({
+               // respond.render('userlist', { "userlist" : result });
+               /*respond.json({
                     status: 'OK',
                     message: `find ${JSON.stringify(data)} in collection [${collection}]`,
                     data: result
-                });
+                });*/
             });
         }
         catch (error) {

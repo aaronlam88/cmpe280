@@ -98,7 +98,8 @@ router.post('/updateuser', function (req, res, next) {
         username: username,
         password: password
     };
-    database._database.get(collection).update(query, { $set: data }, { "multi": true }, function (error, result) {
+    database._database.get(collection).update(query, { $set: data }, { "multi": true },
+     function (error, result) {
         if (error) {
             res.send("Update failed.");
         }
