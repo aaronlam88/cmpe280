@@ -2,6 +2,7 @@
 
 var express = require('express');
 var router = express.Router();
+var us_map = require('../models/state-name.json')
 
 var Database = require('../models/Database');
 var users = require('../json_objects/mockUsers.json');
@@ -129,6 +130,10 @@ router.get('/deleteuser/:username', function (req, res, next) {
             res.send("Successfully deleted " + username);
         }
     });
+
+  /* GET home page. */
+router.get('/state-name', function (req, res, next) {
+    res.json(us_map);
 });
 
 module.exports = router;

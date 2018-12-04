@@ -1,7 +1,0 @@
-extends layDB
-
-block content
-    h1= title
-    form#formAddUser(name="deleteuser",method="post",action="/api/deleteuser")
-        input#inputUserName(type="text", placeholder="username", name="username")
-        button#btnSubmit(type="submit") submit
