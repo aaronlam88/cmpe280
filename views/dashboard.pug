@@ -35,7 +35,7 @@ block content
         vizElement.parentNode.insertBefore(scriptElement, vizElement);
       
   section(class="wrapper")
-    div(class="align-center")
+    div(id="showMore" class="align-center")
       div(class="button special" onclick="showMore()") Show More
     br
     div(class="inner" id="extra" style="display:none")
@@ -85,4 +85,8 @@ block content
   script(src="/common/graph.js")
   script(src="/dashboardCtr.js")
   script(type='text/javascript').
-    function showMore() { document.getElementById('extra').style.display = "block";}
+    function showMore() { 
+      document.getElementById('extra').style.display = "block";
+      var element = document.getElementById("showMore");
+      element.parentNode.removeChild(element);
+    }
