@@ -1,6 +1,6 @@
 "use strict";
 
-require('pug'); // check if pug is install
+require('pug','html'); // check if pug is install
 
 var createError = require('http-errors');
 var express = require('express');
@@ -17,7 +17,7 @@ app.use(compression())
 
 // setup view engine
 app.set('views', path.join(__dirname, 'views')); // all view templates should be in views/ directory
-app.set('view engine', 'pug'); // using pug as view engine
+app.set('view engine', 'pug','html'); // using pug as view engine
 
 // setup static access for html & css files
 // NOTE: all files under static directory are public and can be viewed by anyone
@@ -44,6 +44,13 @@ app.use('/home', require('./routes/index'));
 
 // for mongodb api
 app.use('/mongodb', require('./routes/mongodb'));
+
+app.use('/chart', require('./routes/chart'));
+app.use('/data', require('./routes/dataDashboard'));
+app.use('/tableau', require('./routes/tableau1'));
+app.use('/review', require('./routes/review'));
+app.use('/survey', require('./routes/survey'));
+
 
 // for json object api
 app.use('/api', require('./routes/api'));
