@@ -17,7 +17,7 @@
     display: inline-block !important;
     content: "\f005" !important;
     background: none !important;
-    border: none !important; 
+    border: none !important;
 }
 
 .rating>.half:before {
@@ -31,7 +31,9 @@
 }
 
 /***** CSS Magic to Highlight Stars on Hover *****/
-.rating>input[type="checkbox"]:checked + label:before, .rating>input[type="radio"]:checked + label:before {
+
+.rating>input[type="checkbox"]:checked+label:before,
+.rating>input[type="radio"]:checked+label:before {
     background: none !important;
     border-color: none !important;
     color: #FFD700 !important;
