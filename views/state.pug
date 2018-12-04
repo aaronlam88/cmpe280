@@ -1,0 +1,46 @@
+extends layout
+
+block content
+
+  section(class="wrapper")
+    div(class="inner")
+      //- 1st row
+      div(class="row align-center")
+        div(class="4u 12u$(medium)")
+          h3 Most Rated State
+          div(class="box")
+            div(id="most-rated-state-loading" class="lds-default")
+              - for(var x = 0; x < 12; x++)
+                div
+            h4(id="most-rated-state")
+        div(class="4u 12u$(medium)")
+          h3 Higest Rated State
+          div(class="box")
+            div(id="highest-rated-state-loading" class="lds-default")
+              - for(var x = 0; x < 12; x++)
+                div
+            h4(id="highest-rated-state")
+        div(class="4u 12u$(medium)")
+          h3 Lowest Rated State
+          div(class="box")
+            div(id="lowest-rated-state-loading" class="lds-default")
+              - for(var x = 0; x < 12; x++)
+                div
+            h4(id="lowest-rated-state")
+      //- 2nd row
+      div(class="row align-center")
+        div(class="12u 12u$(medium)")
+          h3 Review Rating Count
+          div(id="us-rating-loading" class="lds-default")
+            - for(var x = 0; x < 12; x++)
+              div
+          div(id="us-rating")
+
+      //- 3rd row
+      div(class="row align-center")
+        div(class="12u 12u$(medium)")
+          h3 Rating Trend Over Pass 30 Days
+          div(id="rating-line-loading" class="lds-default")
+            - for(var x = 0; x < 12; x++)
+              div
+          div(id="rating-line")
