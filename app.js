@@ -41,9 +41,6 @@ app.use(session({
 // home page
 app.use('/', require('./routes/index'));
 app.use('/home', require('./routes/index'));
-// about
-// app.use('/about', require('./routes/about'));
-//
 
 // for mongodb api
 app.use('/mongodb', require('./routes/mongodb'));
@@ -54,9 +51,10 @@ app.use('/api', require('./routes/api'));
 // dashboard
 app.use('/dashboard', require('./routes/dashboard'));
 
-app.use('/intro2', require('./routes/intro'));
+// contact
 app.use('/contact', require('./routes/contact'));
-app.use('/overview', require('./routes/overview'));
+
+// top
 app.use('/top', require('./routes/top'));
 
 // catch 404 and forward to error handler
