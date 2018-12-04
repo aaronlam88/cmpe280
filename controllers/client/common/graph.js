@@ -6,12 +6,9 @@ var rawData = undefined;
 let graph = (function () {
     // ==== class variables ====
     let currentURL = 'http://' + window.location.hostname + ':' + window.location.port;
-<<<<<<< HEAD
-
-=======
     let rawData = undefined;
     let statName = undefined;
->>>>>>> 8e2d165713d40daf26f13a2f12cf7a050c559e2e
+
 
     let _USMapData = undefined;
     let _USRatingData = undefined;
@@ -20,16 +17,15 @@ let graph = (function () {
     let _HighestRatedState = undefined;
     let _LowestRatedState = undefined;
 
-<<<<<<< HEAD
-    function init() {
-        api.jQueryPost(currentURL + '/mongodb/find', {collection: 'hotel_review', data: {}}, 'dataIsReady');
+    function init(query = {}) {
+
+        api.jQueryGet(currentURL + '/api/state-name', 'stateNameIsReady');
+        api.jQueryPost(currentURL + '/mongodb/find', { collection: 'hotel_review', data: query }, 'dataIsReady');
+        window.addEventListener('stateNameIsReady', (event) => stateNameIsReady(event));
         window.addEventListener('dataIsReady', (event) => dataIsReady(event));
     }
 
-    function dataIsReady(data) {
-        if(data.status === 'ERROR') {
-            console.log(data.message);
-=======
+
     function init(query = {}) {
 
         api.jQueryGet(currentURL + '/api/state-name', 'stateNameIsReady');
@@ -45,7 +41,6 @@ let graph = (function () {
     function dataIsReady(event) {
         if (event.status === 'ERROR') {
             console.log(event.message);
->>>>>>> 8e2d165713d40daf26f13a2f12cf7a050c559e2e
         }
         rawData = event.data;
     }
@@ -133,8 +128,7 @@ let graph = (function () {
         let event = new Event('USMapData');
         window.dispatchEvent(event);
 
-<<<<<<< HEAD
-=======
+
         let mostRatedState = document.getElementById('most-rated-state');
         if (mostRatedState) {
             let state = statName.find(element => element.abbreviation === _MostRatedState).name;
@@ -239,7 +233,6 @@ let graph = (function () {
         });
 
         return _ReviewCountPerDate;
->>>>>>> 8e2d165713d40daf26f13a2f12cf7a050c559e2e
     }
 
     /**
@@ -254,14 +247,8 @@ let graph = (function () {
         }
 
         AmCharts.makeChart(htmlElementId, {
-<<<<<<< HEAD
-            titles: [
-                { text: "Avg Review Rating by State" }
-            ],
             type: "map",
             theme: "light",
-            colorSteps: 10,
-            panEventsEnabled: true,
 =======
             type: "map",
             theme: "light",
@@ -287,8 +274,6 @@ let graph = (function () {
         document.getElementById(`${htmlElementId}-loading`).remove();
         document.getElementById(htmlElementId).style.height = "500px";
     }
-<<<<<<< HEAD
-=======
 
     function drawUSBarChart(htmlElementId) {
         let USMapData = getUSMapData();
@@ -427,10 +412,10 @@ let graph = (function () {
     }
 
     /**
-     * 
-     * @param {*} data 
-     * @param {*} htmlElementId 
-     * @param {*} height 
+     *
+     * @param {*} data
+     * @param {*} htmlElementId
+     * @param {*} height
      */
     function drawLinesChart(data, htmlElementId, height = "500px") {
         data = data.slice(-30);
@@ -495,20 +480,17 @@ let graph = (function () {
         e.chart.legendDiv.appendChild(title)
     }
 
->>>>>>> 8e2d165713d40daf26f13a2f12cf7a050c559e2e
+
+
     // expose functions or variables in the return
     // ==> make functions or variables in the return public
     return {
         init: init,
-<<<<<<< HEAD
-        drawUSMap: drawUSMap
-=======
         rawData: rawData,
         drawUSMap: drawUSMap,
         drawUSBarChart: drawUSBarChart,
         drawAllReviewRakingChart: drawAllReviewRatingChart,
         drawAllReviewTrend: drawUSReviewCountPerDate,
         drawRatingLinesChart: drawRatingLinesChart,
->>>>>>> 8e2d165713d40daf26f13a2f12cf7a050c559e2e
     }
 })();

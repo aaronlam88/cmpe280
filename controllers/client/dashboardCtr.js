@@ -12,13 +12,14 @@ let dashboardCtr = (function () {
         graph.init();
 
         graph.drawUSMap('us-heatmap');
-<<<<<<< HEAD
-        charts.drawCharts('chart1');
-=======
         graph.drawAllReviewRakingChart('us-rating');
         graph.drawAllReviewTrend('us-trendline');
         graph.drawRatingLinesChart('rating-line');
->>>>>>> 8e2d165713d40daf26f13a2f12cf7a050c559e2e
+
+        graph.drawAllReviewRakingChart('us-rating');
+        graph.drawAllReviewTrend('us-trendline');
+        graph.drawRatingLinesChart('rating-line');
+
     }
 
     // expose functions or variables in the return
