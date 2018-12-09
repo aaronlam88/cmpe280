@@ -138,6 +138,12 @@ p9 {
   font-weight:900;
   font-size:20px;
 }
+p8 {
+  color: #c1535c;
+  font-family: sans-serif;
+  font-weight:200;
+  font-size:13px;
+}
 
 .button1 {
   border: none;

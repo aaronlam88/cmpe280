@@ -7,6 +7,12 @@ block content
         if error
           h4(class="error-message")=error.message
         h2 Advance Dashboard
+        p9 Overview of hotel data in the US
+        p
+        p9 Try to filter on right side to explore the hotel and time you interest.
+        p
+        p8 (if you experience any unexpected error on loading tableau graph, it might cause by version of browser, please try another browser)
+        p
       #viz1543451541838.tableauPlaceholder(style='position: relative; margin:auto')
         noscript
           a(href='#')
@@ -33,9 +39,11 @@ block content
         var scriptElement = document.createElement('script');
         scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
         vizElement.parentNode.insertBefore(scriptElement, vizElement);
-      
+
   section(class="wrapper")
     div(id="showMore" class="align-center")
+      p9 Click on Load more to get more information about rating trend of recent data and top choice by state
+      p
       div(class="button special" onclick="showMore()") Show More
     br
     div(class="inner" id="extra" style="display:none")
