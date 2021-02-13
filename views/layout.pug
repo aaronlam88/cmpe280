@@ -1,6 +1,7 @@
 doctype html
 html
   head
+    //- ****** START DO NOT TOUCH ******
     title= title
     //- for SOE
     meta(name="viewport" content="width=device-width initial-scale=1")
@@ -15,9 +16,10 @@ html
     //- css files
     link(rel='stylesheet' href='/styles/templated/assets/css/font-awesome.min.css')
     link(rel='stylesheet' href='/styles/templated/assets/css/main.css')
-    link(rel='stylesheet' href='/styles/extra.css')
-    link(rel='stylesheet' href='/styles/dragDrop.css')
-    link(rel='stylesheet' href='/styles/resize.css')
+    link(rel='stylesheet' href='/styles/card.css')
+    link(rel='stylesheet' href='/styles/star.css')
+    link(rel='stylesheet' href='styles/templated/assets/css/intro.css')
+    
     //- NOTE: The following js files had to be in the following order
     //- jquery
     script(src="/jquery-ui/external/jquery/jquery.js")
@@ -29,27 +31,35 @@ html
     script(src="/styles/templated/assets/js/skel.min.js")
     script(src="/styles/templated/assets/js/util.js")
     script(src="/styles/templated/assets/js/main.js")
+    //- ****** END DO NOT TOUCH ******
+    //- extra css
+    link(rel='stylesheet' href="/extra.css")
 
-    //- chart.js
-    script(src='/chartjs/Chart.bundle.min.js')
+    //- amChart.js
+    script(src="https://www.amcharts.com/lib/3/amcharts.js")
+    script(src="https://www.amcharts.com/lib/3/serial.js")
+    script(src="https://www.amcharts.com/lib/3/ammap.js")
+    script(src="https://www.amcharts.com/lib/3/maps/js/usaLow.js")
+    script(src="https://www.amcharts.com/lib/3/plugins/export/export.min.js")
+
+    script(src="https://www.amcharts.com/lib/3/themes/none.js")
+    script(src="https://www.amcharts.com/lib/3/themes/light.js")
+
+    link(rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all")
     
   body(class="subpage")
 
     header(id="header")
       div(class="inner")
         a(href="/" class="logo")
-          img(src="/logo.png" alt="TripWiser Logo")
+          img(src="styles/templated/images/logo.png" alt="TripWiser Logo")
         nav(id="nav")
           a(href="/") Home
-          a(href="/profile") Profile
-          a(href="/register") Register
-          a(href="/explore") Explore
-          a(href="/search") Search
-          a(href="/about") About
           a(href="/dashboard") Dashboard
+          a(href="/contact") Contact
           a(href="/mongodb") MongoDB
-          a(href="/data") DataBoard-Tableau
-          a(href="/chart") Dashboard-chartJS
+          a(href="/review") Review
+          a(href="/survey") Survey
         a(href="#navPanel" class="navPanelToggle")
           span(class="fa fa-bars")
 

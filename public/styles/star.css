@@ -1,0 +1,64 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+/****** Style Star Rating Widget *****/
+
+.rating {
+    border: none;
+    float: left;
+}
+
+.rating>input {
+    display: none !important;
+}
+
+.rating>label:before {
+    margin: 5px !important;
+    font-size: 1.25em !important;
+    font-family: FontAwesome !important;
+    display: inline-block !important;
+    content: "\f005" !important;
+    background: none !important;
+    border: none !important;
+}
+
+.rating>.half:before {
+    content: "\f089" !important;
+    position: absolute !important;
+}
+
+.rating>label {
+    color: #ddd !important;
+    float: right !important;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating>input[type="checkbox"]:checked+label:before,
+.rating>input[type="radio"]:checked+label:before {
+    background: none !important;
+    border-color: none !important;
+    color: #FFD700 !important;
+    content: '\f005' !important;
+}
+
+.rating>input:checked~label,
+/* show gold star when clicked */
+
+.rating:not(:checked)>label:hover,
+/* hover current star */
+
+.rating:not(:checked)>label:hover~label {
+    color: #FFD700 !important;
+}
+
+/* hover previous stars in list */
+
+.rating>input:checked+label:hover,
+/* hover current star when changing rating */
+
+.rating>input:checked~label:hover,
+.rating>label:hover~input:checked~label,
+/* lighten current selection */
+
+.rating>input:checked~label:hover~label {
+    color: #FFED85 !important;
+}

@@ -2,12 +2,99 @@ extends layout
 
 block content
   section(id="main" class="wrapper")
-    div(class="inner")
+    div(class="inner align-center")
       header(class="align-center")
-        h2 Dashboard
-      div(id="userTable" class="table-wrapper")
-    div(class="align-center")
-      form(action="/logout", method="get")
-          button(type="Submit" class="button special") Log out
-    script(src="/common/api.js")
-    script(src="/dashboardCtr.js")
+        if error
+          h4(class="error-message")=error.message
+        h2 Advance Dashboard
+        p9 Overview of hotel data in the US
+        p
+        p9 Try to filter on right side to explore the hotel and time you interest.
+        p
+        p8 (if you experience any unexpected error on loading tableau graph, it might cause by version of browser, please try another browser)
+        p
+      #viz1543451541838.tableauPlaceholder(style='position: relative; margin:auto')
+        noscript
+          a(href='#')
+            img(alt=' ', src='https://public.tableau.com/static/images/Da/Dashboard-WebKeepers/Dashboard1/1_rss.png', style='border: none')
+        object.tableauViz(style='display:none; margin:auto')
+          param(name='host_url', value='https%3A%2F%2Fpublic.tableau.com%2F')
+          param(name='embed_code_version', value='3')
+          param(name='site_root', value='')
+          param(name='name', value='Dashboard-WebKeepers/Dashboard1')
+          param(name='tabs', value='no')
+          param(name='toolbar', value='yes')
+          param(name='static_image', value='https://public.tableau.com/static/images/Da/Dashboard-WebKeepers/Dashboard1/1.png')
+          param(name='animate_transition', value='yes')
+          param(name='display_static_image', value='yes')
+          param(name='display_spinner', value='yes')
+          param(name='display_overlay', value='yes')
+          param(name='display_count', value='yes')
+      script(type='text/javascript').
+        var divElement = document.getElementById('viz1543451541838');
+        var vizElement = divElement.getElementsByTagName('object')[0];
+        vizElement.style.minWidth='100%';
+        vizElement.style.minHeight='600px';
+        vizElement.style.maxHeight=(divElement.offsetWidth*0.75)+'px';
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+
+  section(class="wrapper")
+    div(id="showMore" class="align-center")
+      p9 Click on Load more to get more information about rating trend of recent data and top choice by state
+      p
+      div(class="button special" onclick="showMore()") Show More
+    br
+    div(class="inner" id="extra" style="display:none")
+      //- 1st row
+      div(class="row align-center")
+        div(class="4u 12u$(medium)")
+          h3 Most Rated State
+          div(class="box")
+            div(id="most-rated-state-loading" class="lds-default")
+              - for(var x = 0; x < 12; x++)
+                div
+            h4(id="most-rated-state")
+        div(class="4u 12u$(medium)")
+          h3 Higest Rated State
+          div(class="box")
+            div(id="highest-rated-state-loading" class="lds-default")
+              - for(var x = 0; x < 12; x++)
+                div
+            h4(id="highest-rated-state")
+        div(class="4u 12u$(medium)")
+          h3 Lowest Rated State
+          div(class="box")
+            div(id="lowest-rated-state-loading" class="lds-default")
+              - for(var x = 0; x < 12; x++)
+                div
+            h4(id="lowest-rated-state")
+      //- 2nd row
+      div(class="row align-center")
+        div(class="12u 12u$(medium)")
+          h3 Review Rating Count
+          div(id="us-rating-loading" class="lds-default")
+            - for(var x = 0; x < 12; x++)
+              div
+          div(id="us-rating")
+
+      //- 3rd row
+      div(class="row align-center")
+        div(class="12u 12u$(medium)")
+          h3 Rating Trend Over Pass 30 Days
+          div(id="rating-line-loading" class="lds-default")
+            - for(var x = 0; x < 12; x++)
+              div
+          div(id="rating-line")
+
+
+  script(src="/common/api.js")
+  script(src="/common/graph.js")
+  script(src="/dashboardCtr.js")
+  script(type='text/javascript').
+    function showMore() { 
+      document.getElementById('extra').style.display = "block";
+      var element = document.getElementById("showMore");
+      element.parentNode.removeChild(element);
+    }

@@ -32,9 +32,9 @@ class Database {
         });
 
         this.error = {
-            collection: { status: 'ERROR', message: 'Missing collection!'},
-            jsonObject: {status: 'ERROR', message: 'Data is not a JSON object!'},
-            arrayObject: {status: 'ERROR', message: 'Data is not an array of JSON!'}
+            collection: { status: 'ERROR', message: 'Missing collection!' },
+            jsonObject: { status: 'ERROR', message: 'Data is not a JSON object!' },
+            arrayObject: { status: 'ERROR', message: 'Data is not an array of JSON!' }
         }
     }
 
@@ -50,7 +50,7 @@ class Database {
             return
         }
         try {
-            this.this._database.create(collection, function (error) {
+            this._database.create(collection, (error) => {
                 if (error) {
                     console.log(error);
                     throw error;
@@ -88,13 +88,16 @@ class Database {
             return;
         }
         try {
-            this._database.get(collection).insert(data, function (error, result) {
+            this._database.get(collection).insert(data, (error, result) => {
                 if (error) {
                     console.log(error);
                     throw error;
                 }
                 console.log(`${result.length} object(s) inserted into collection [${collection}]`);
                 // you can do respond.render(view, data) here
+                if (!respond) {
+                    return;
+                }
                 respond.json({
                     status: 'OK',
                     message: `${result.length} object(s) inserted into collection [${collection}]`,
@@ -102,6 +105,10 @@ class Database {
                 });
             });
         } catch (error) {
+            if (!respond) {
+                console.log(error);
+                return;
+            }
             respond.json({ 'status': 'ERROR', 'message': error });
         }
     }
@@ -124,7 +131,7 @@ class Database {
             return;
         }
         try {
-            this._database.get(collection).find(data, function (error, result) {
+            this._database.get(collection).find(data, (error, result) => {
                 if (error) {
                     console.log(error);
                     throw error;
@@ -161,7 +168,7 @@ class Database {
             return;
         }
         try {
-            this._database.collection(collection).remove(data, function (error, result) {
+            this._database.collection(collection).remove(data, (error, result) => {
                 if (error) {
                     console.log(error);
                     throw error;
@@ -199,7 +206,7 @@ class Database {
             return;
         }
         try {
-            this._database.get(collection).update(query, { $set: data }, { "multi": true }, function (error, result) {
+            this._database.get(collection).update(query, { $set: data }, { "multi": true }, (error, result) => {
                 if (error) {
                     console.log(error);
                     throw error;

@@ -1,0 +1,56 @@
+
+extends layout
+
+block content  
+  section(id="main" class="wrapper")
+    div(class="inner")
+      h3 Rating:
+      span1( class="rating")
+        input(id="rating5" type="radio" name="rating" value="5")
+        label(for="rating5")
+        input(id="rating4" type="radio" name="rating" value="4")
+        label(for="rating4")
+        input(id="rating3" type="radio" name="rating" value="3")
+        label(for="rating3")
+        input(id="rating2" type="radio" name="rating" value="2")
+        label(for="rating2")
+        input(id="rating1" type="radio" name="rating" value="1")
+        label(for="rating1")
+      //-  Form
+      form(method='post' action='#')
+        .row.uniform
+          .6u(class='12u$(xsmall)')
+            input#name(type='text' name='name' value='' placeholder='Name')
+          div(class='6u$ 12u$(xsmall)')
+            input#email(type='email' name='email' value='' placeholder='Email')
+          div(class='12u$')
+            .select-wrapper
+              select#category(name='Hotel Type')
+                option(value='') - Category -
+                option(value='1') Business Hotels
+                option(value='1') Suite Hotels
+                option(value='1') Airport Hotels
+                option(value='1') Resort Hotels
+          .4u(class='12u$(small)')
+            input#priority-low(type='radio' name='priority' checked='')
+            label(for='priority-low') perfect service
+          .4u(class='12u$(small)')
+            input#priority-normal(type='radio' name='priority')
+            label(for='priority-normal') good service
+          div(class='4u$ 12u$(small)')
+            input#priority-high(type='radio' name='priority')
+            label(for='priority-high') bad service
+          .6u(class='12u$(small)')
+            input#copy(type='checkbox' name='copy')
+            label(for='copy') Email me a copy of this message
+          div(class='6u$ 12u$(small)')
+            input#human(type='checkbox' name='human' checked='')
+            label(for='human') I am a human and not a robot
+          div(class='12u$')
+            textarea#message(name='message' placeholder='Your comment' rows='6')
+          div(class='12u$')
+            ul.actions
+              li
+                a(class = "button" href="/") submit
+              li
+                 a(class = "button" href="survey") Reset

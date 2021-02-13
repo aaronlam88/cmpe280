@@ -5,13 +5,38 @@ var router = express.Router();
 
 var Database = require('../models/Database');
 
+var users = require('../json_objects/admin.json');
+
 // create a connection to database
 var database = new Database();
 
-// default route
 router.get('/', function (req, res, next) {
-    res.render('mongodb');
+    if (req.session.username && req.session.token) {
+        res.render('mongodb');
+    } else {
+        res.render('mongodb-login', { error: { message: "You need to login first!" } });
+    }
 });
+
+/* POST get username and password from the form*/
+router.post('/', function (req, res, next) {
+    var username = req.body.username;
+    var password = req.body.password;
+
+    if (users[username].password === password) {
+        req.session.username = username;
+        var token = Math.random().toString(36);
+        req.session.token = token;
+        res.render('mongodb');
+    } else {
+        res.render('error', { message: "Wrong username or password!" });
+    }
+});
+
+// // default route
+// router.get('/', function (req, res, next) {
+//     res.render('mongodb');
+// });
 
 router.post('/createCollection', function (req, res, next) {
     var collection = req.body.collection;
@@ -22,7 +47,6 @@ router.post('/createCollection', function (req, res, next) {
 router.post('/insert', function (req, res, next) {
     var collection = req.body.collection;
     var data = req.body.data;
-    console.log(data);
     database.insert(res, collection, data);
 });
 
