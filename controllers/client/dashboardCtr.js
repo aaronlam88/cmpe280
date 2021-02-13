@@ -15,6 +15,11 @@ let dashboardCtr = (function () {
         graph.drawAllReviewRakingChart('us-rating');
         graph.drawAllReviewTrend('us-trendline');
         graph.drawRatingLinesChart('rating-line');
+
+        graph.drawAllReviewRakingChart('us-rating');
+        graph.drawAllReviewTrend('us-trendline');
+        graph.drawRatingLinesChart('rating-line');
+
     }
 
     // expose functions or variables in the return

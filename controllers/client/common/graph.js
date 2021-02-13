@@ -1,5 +1,7 @@
 "use strict"; // to avoid bad JavaScript code https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
-
+var states = ['Oregon', 'California', 'Utah', 'Idaho', 'Alaska'];
+var count = Array(5).fill(0);
+var rawData = undefined;
 
 let graph = (function () {
     // ==== class variables ====
@@ -7,12 +9,22 @@ let graph = (function () {
     let rawData = undefined;
     let statName = undefined;
 
+
     let _USMapData = undefined;
     let _USRatingData = undefined;
     let _ReviewCountPerDate = undefined;
     let _MostRatedState = undefined;
     let _HighestRatedState = undefined;
     let _LowestRatedState = undefined;
+
+    function init(query = {}) {
+
+        api.jQueryGet(currentURL + '/api/state-name', 'stateNameIsReady');
+        api.jQueryPost(currentURL + '/mongodb/find', { collection: 'hotel_review', data: query }, 'dataIsReady');
+        window.addEventListener('stateNameIsReady', (event) => stateNameIsReady(event));
+        window.addEventListener('dataIsReady', (event) => dataIsReady(event));
+    }
+
 
     function init(query = {}) {
 
@@ -34,15 +46,15 @@ let graph = (function () {
     }
 
     function getUSMapData() {
-        if (!rawData) {
+        if(!rawData) {
             window.addEventListener('dataIsReady', () => getUSMapData());
             return;
         }
-        if (_USMapData) {
+        if(_USMapData) {
             return _USMapData;
         }
         // TODO: handle error
-        if (rawData.status !== 'OK') {
+        if(rawData.status !== 'OK') {
             return;
         }
 
@@ -55,7 +67,27 @@ let graph = (function () {
         let maxRating = 0;
         let minRating = 0;
         rawData.data.forEach(element => {
-            if (!element.country || !element.province || element.province.length != 2 || !element.reviews_rating) return;
+            if (!element.province || !element.reviews_rating) return;
+            let temp = element.province.toUpperCase();
+            switch(temp) {
+                case 'OR':
+                  count[0]++;
+                  break;
+                case 'CA':
+                  count[1]++;
+                  break;
+                case 'UT':
+                  count[2]++;
+                  break;
+                case 'ID':
+                  count[3]++;
+                  break;
+                case 'AK':
+                  count[4]++;
+                  break;
+                default:
+                  break;
+            }
 
             let location = `${element.country}-${element.province}`;
             mapData[location] = mapData[location] || {};
@@ -95,6 +127,7 @@ let graph = (function () {
 
         let event = new Event('USMapData');
         window.dispatchEvent(event);
+
 
         let mostRatedState = document.getElementById('most-rated-state');
         if (mostRatedState) {
@@ -204,12 +237,11 @@ let graph = (function () {
 
     /**
      *
-     * @param {String} htmlElementId
      */
     function drawUSMap(htmlElementId) {
         let USMapData = getUSMapData();
 
-        if (!USMapData) {
+        if(!USMapData) {
             window.addEventListener('USMapData', () => drawUSMap(htmlElementId));
             return;
         }
@@ -217,15 +249,21 @@ let graph = (function () {
         AmCharts.makeChart(htmlElementId, {
             type: "map",
             theme: "light",
+=======
+            type: "map",
+            theme: "light",
             // colorSteps: 20,
             allowClickOnSelectedObject: false,
+>>>>>>> 8e2d165713d40daf26f13a2f12cf7a050c559e2e
             dataProvider: {
                 map: "usaLow",
                 areas: USMapData.areas
             },
+
             areasSettings: {
                 autoZoom: true
             },
+
             valueLegend: {
                 right: 10,
                 minValue: USMapData.min,
@@ -235,8 +273,6 @@ let graph = (function () {
 
         document.getElementById(`${htmlElementId}-loading`).remove();
         document.getElementById(htmlElementId).style.height = "500px";
-
-        window.removeEventListener('USMapData', drawUSMap);
     }
 
     function drawUSBarChart(htmlElementId) {
@@ -376,10 +412,10 @@ let graph = (function () {
     }
 
     /**
-     * 
-     * @param {*} data 
-     * @param {*} htmlElementId 
-     * @param {*} height 
+     *
+     * @param {*} data
+     * @param {*} htmlElementId
+     * @param {*} height
      */
     function drawLinesChart(data, htmlElementId, height = "500px") {
         data = data.slice(-30);
@@ -443,6 +479,8 @@ let graph = (function () {
         title.className = "legend-title";
         e.chart.legendDiv.appendChild(title)
     }
+
+
 
     // expose functions or variables in the return
     // ==> make functions or variables in the return public
